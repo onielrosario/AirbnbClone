@@ -29,10 +29,28 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.becomeFirstResponder()
+        searchBar.resignFirstResponder()
         guard let searchText = searchBar.text,
-        !searchText.isEmpty else { return }
-        
-        
+        !searchText.isEmpty else {
+            showAlert(title: "", message: "Please enter a place name.")
+            return }
+       let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(searchText) { (placeMark, error) in
+            if let error = error {
+                print(error)
+            } else if let placeMark = placeMark {
+                let placeMark = placeMark.first
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = (placeMark?.location?.coordinate)!
+                let span = MKCoordinateSpan(latitudeDelta: 0.075, longitudeDelta: 0.075)
+                let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
+                self.mapView.setRegion(region, animated: true)
+                annotation.title = searchText
+                self.mapView.addAnnotation(annotation)
+                self.mapView.selectAnnotation(annotation, animated: true)
+                self.locationNameLabel.text = searchText
+                self.searchBar.text = ""
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@
 		093277942218CA8600C95503 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277932218CA8600C95503 /* SavedViewController.swift */; };
 		093277962218CA9300C95503 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277952218CA9300C95503 /* ProfileViewController.swift */; };
 		093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277982218CE1B00C95503 /* ActivityViewController.swift */; };
+		0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */; };
 		32305601C0E5C5F77188A865 /* Pods_AirbnbClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE3FDE432537BF5C642CD2 /* Pods_AirbnbClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		093277932218CA8600C95503 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		093277952218CA9300C95503 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		093277982218CE1B00C95503 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		0B5D868780AB656433F7272A /* Pods-AirbnbClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirbnbClone.release.xcconfig"; path = "Target Support Files/Pods-AirbnbClone/Pods-AirbnbClone.release.xcconfig"; sourceTree = "<group>"; };
 		E1A69BC771D53E3CF8C286EB /* Pods-AirbnbClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirbnbClone.debug.xcconfig"; path = "Target Support Files/Pods-AirbnbClone/Pods-AirbnbClone.debug.xcconfig"; sourceTree = "<group>"; };
 		F7DE3FDE432537BF5C642CD2 /* Pods_AirbnbClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirbnbClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 		0904E3C32217768D00B4066E /* AirbnbClone */ = {
 			isa = PBXGroup;
 			children = (
+				0932779A2218F2CC00C95503 /* extensions */,
 				093277972218CAA100C95503 /* Cells */,
 				093277922218C2F500C95503 /* Views */,
 				093277912218C2EC00C95503 /* Controllers */,
@@ -113,6 +116,14 @@
 			children = (
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		0932779A2218F2CC00C95503 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		223F4D49F24E9786B8901A33 /* Pods */ = {
@@ -291,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				093277942218CA8600C95503 /* SavedViewController.swift in Sources */,
+				0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */,
 				0904E3C72217768D00B4066E /* SearchViewController.swift in Sources */,
 				093277962218CA9300C95503 /* ProfileViewController.swift in Sources */,
 				093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */,
