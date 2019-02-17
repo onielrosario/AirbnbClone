@@ -19,11 +19,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var maxRange: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
-       searchBar.delegate = self
-        
-        
-        
-        
+        searchBar.delegate = self
     }
 }
 
@@ -31,10 +27,10 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text,
-        !searchText.isEmpty else {
-            showAlert(title: "", message: "Please enter a place name.")
-            return }
-       let geocoder = CLGeocoder()
+            !searchText.isEmpty else {
+                showAlert(title: "", message: "Please enter a place name.")
+                return }
+        let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(searchText) { (placeMark, error) in
             if let error = error {
                 print(error)
