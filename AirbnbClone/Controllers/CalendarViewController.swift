@@ -19,13 +19,25 @@ class CalendarViewController: UIViewController {
     let formatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
-      setupCalendarView()
+        setupCalendarView()
     }
     
     func setupCalendarView() {
-        
+        //setup labeld
+        calendarCollectionView.visibleDates { (visibleDate) in
+            self.setUpCalendarViews(from: visibleDate)
+        }
     }
-
+    
+    
+    func setUpCalendarViews(from visibleDates: DateSegmentInfo) {
+        let date = visibleDates.monthDates.first!.date
+        self.formatter.dateFormat = "MMMM"
+        self.monthLabel.text = self.formatter.string(from: date)
+        self.formatter.dateFormat = "yyyy"
+        self.yearLabel.text = self.formatter.string(from: date)
+    }
+    
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource {
@@ -53,11 +65,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-        let date = visibleDates.monthDates.first!.date
-        formatter.dateFormat = "MMMM"
-        self.monthLabel.text = formatter.string(from: date)
-        formatter.dateFormat = "yyyy"
-        self.yearLabel.text = formatter.string(from: date)
+        setUpCalendarViews(from: visibleDates)
         
     }
     
