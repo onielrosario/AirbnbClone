@@ -26,6 +26,9 @@ class SearchViewController: UIViewController {
     
     private func setSearchBarColor() {
       searchBar.setImage(UIImage(named: "search"), for: .search, state: .normal)
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
 
 }

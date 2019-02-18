@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="search for a place..." translatesAutoresizingMaskIntoConstraints="NO" id="8wn-Ox-xfh">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="search for a place..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wn-Ox-xfh">
+                                <rect key="frame" x="0.0" y="63" width="375" height="56"/>
                                 <color key="tintColor" red="0.94622749090000002" green="0.62506037950000004" blue="0.51761823890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="barTintColor" red="0.94622749090000002" green="0.62506037950000004" blue="0.51761823890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -29,32 +29,32 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Dr-uU-CHs">
-                                <rect key="frame" x="0.0" y="120" width="375" height="267"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="267"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIj-C4-AKA">
-                                <rect key="frame" x="0.0" y="407" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="406" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nu-iZ-WBB">
-                                <rect key="frame" x="0.0" y="438" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="437" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-7l-C1Z">
-                                <rect key="frame" x="73" y="469" width="229" height="31"/>
+                                <rect key="frame" x="73" y="468" width="229" height="31"/>
                                 <color key="tintColor" red="1" green="0.63182455742195476" blue="0.52076781065292832" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIP-w3-MZL">
-                                <rect key="frame" x="0.0" y="509" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="508" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Vne-DF-jmb">
-                                <rect key="frame" x="73" y="540" width="229" height="31"/>
+                                <rect key="frame" x="73" y="539" width="229" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.94622749090194702" green="0.62506037950515747" blue="0.51761823892593384" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </slider>
@@ -62,7 +62,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Dr-uU-CHs" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="1js-yc-uzR"/>
-                            <constraint firstItem="8wn-Ox-xfh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2To-4i-Zf2"/>
+                            <constraint firstItem="8wn-Ox-xfh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-1" id="2To-4i-Zf2"/>
                             <constraint firstItem="yIP-w3-MZL" firstAttribute="centerX" secondItem="8nu-iZ-WBB" secondAttribute="centerX" id="3Wo-ea-f5j"/>
                             <constraint firstItem="Vne-DF-jmb" firstAttribute="centerX" secondItem="yIP-w3-MZL" secondAttribute="centerX" id="5Fx-Eb-tKn"/>
                             <constraint firstItem="yIP-w3-MZL" firstAttribute="width" secondItem="8nu-iZ-WBB" secondAttribute="width" id="7MZ-u8-xbd"/>
