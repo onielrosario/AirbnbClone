@@ -14,8 +14,6 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
-    
-    
     let formatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +22,15 @@ class CalendarViewController: UIViewController {
     
     func setupCalendarView() {
         //setup labeld
+        self.navigationItem.leftBarButtonItem?.tintColor = .white
         calendarCollectionView.visibleDates { (visibleDate) in
             self.setUpCalendarViews(from: visibleDate)
         }
+    }
+    
+    
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        print("done button pressed")
     }
     
     
