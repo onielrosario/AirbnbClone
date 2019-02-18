@@ -17,6 +17,7 @@
 		093277962218CA9300C95503 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277952218CA9300C95503 /* ProfileViewController.swift */; };
 		093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277982218CE1B00C95503 /* ActivityViewController.swift */; };
 		0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */; };
+		09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */; };
 		09B073E22219C85A002947C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B073E12219C85A002947C6 /* CalendarViewController.swift */; };
 		09B073E62219DDFD002947C6 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B073E52219DDFD002947C6 /* CalendarCell.swift */; };
 		32305601C0E5C5F77188A865 /* Pods_AirbnbClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE3FDE432537BF5C642CD2 /* Pods_AirbnbClone.framework */; };
@@ -35,6 +36,7 @@
 		093277952218CA9300C95503 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		093277982218CE1B00C95503 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09B073E12219C85A002947C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		09B073E52219DDFD002947C6 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		0B5D868780AB656433F7272A /* Pods-AirbnbClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirbnbClone.release.xcconfig"; path = "Target Support Files/Pods-AirbnbClone/Pods-AirbnbClone.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */,
+				09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				093277942218CA8600C95503 /* SavedViewController.swift in Sources */,
 				0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */,
 				0904E3C72217768D00B4066E /* SearchViewController.swift in Sources */,
+				09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */,
 				093277962218CA9300C95503 /* ProfileViewController.swift in Sources */,
 				093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */,
 				09B073E22219C85A002947C6 /* CalendarViewController.swift in Sources */,

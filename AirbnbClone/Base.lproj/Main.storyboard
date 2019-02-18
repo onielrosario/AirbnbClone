@@ -18,11 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8wn-Ox-xfh">
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="search for a place..." translatesAutoresizingMaskIntoConstraints="NO" id="8wn-Ox-xfh">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <color key="tintColor" red="0.94622749090000002" green="0.62506037950000004" blue="0.51761823890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="barTintColor" red="0.94622749090000002" green="0.62506037950000004" blue="0.51761823890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Dr-uU-CHs">
                                 <rect key="frame" x="0.0" y="120" width="375" height="267"/>

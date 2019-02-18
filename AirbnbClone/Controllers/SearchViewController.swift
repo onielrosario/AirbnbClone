@@ -20,10 +20,22 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        mapView.delegate = self
+        setSearchBarColor()
     }
+    
+    private func setSearchBarColor() {
+      searchBar.setImage(UIImage(named: "search"), for: .search, state: .normal)
+    }
+
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = ""
+    }
+    
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text,
@@ -48,5 +60,13 @@ extension SearchViewController: UISearchBarDelegate {
                 self.searchBar.text = ""
             }
         }
+    }
+}
+
+extension SearchViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        annotationView.pinTintColor = UIColor.init(r: 241, g: 159, b: 132)
+        return annotationView
     }
 }
