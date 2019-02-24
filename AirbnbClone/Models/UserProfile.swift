@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-struct RaceReview {
+struct UserProfile {
   let name: String
   let review: String
   let type: String
