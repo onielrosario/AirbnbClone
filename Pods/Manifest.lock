@@ -108,6 +108,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
+  - SwiftRangeSlider (2.0.0)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -115,6 +116,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - JTAppleCalendar (~> 7.0)
+  - SwiftRangeSlider
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -136,6 +138,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SwiftRangeSlider
 
 SPEC CHECKSUMS:
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
@@ -156,7 +159,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SwiftRangeSlider: f86e3b637c961120158fa1a89277c8343845cbe4
 
-PODFILE CHECKSUM: dc519c15ca4aa6b4b0c467bda999888f2783741b
+PODFILE CHECKSUM: b9d914f30b9b75549e4a67289b308205fa04deab
 
 COCOAPODS: 1.6.0

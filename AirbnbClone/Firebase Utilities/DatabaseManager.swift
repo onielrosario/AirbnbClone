@@ -24,21 +24,20 @@ final class DatabaseManager {
     return db
   }()
   
-  static func postRaceReviewToDatabase(raceReview: RaceReview) {
+  static func postUserToDatabase(userInfo: UserProfile) {
     var ref: DocumentReference? = nil
     ref = firebaseDB.collection(DatabaseKeys.RaceReviewCollectionKey).addDocument(data: [
-                                                                  "raceName"    : raceReview.name,
-                                                                  "raceReview"  : raceReview.review,
-                                                                  "reviewerId"  : raceReview.reviewerId,
-                                                                  "latitude"    : raceReview.lat,
-                                                                  "longitude"   : raceReview.lon,
-                                                                  "raceType"    : raceReview.type
+                                                                  "username"    : userInfo.name,
+                                                                  "email"  : userInfo.email,
+                                                                  "password"  : userInfo.password,
+                                                                  "latitude"    : userInfo.lat,
+                                                                  "longitude"   : userInfo.lon,
+                                                                  "userID"    : userInfo.userId
       ], completion: { (error) in
       if let error = error {
-        print("posing race failed with error: \(error)")
+        print("posting user failed with error: \(error)")
       } else {
-        print("post created at ref: \(ref?.documentID ?? "no doc id")")
-        
+        print("user created at ref: \(ref?.documentID ?? "no doc id")")
         // updating a firestore dcoument:
         // here we are updating the field dbReference for race review,
         // useful for e.g deleting a (race review) document

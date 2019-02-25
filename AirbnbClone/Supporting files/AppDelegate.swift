@@ -11,12 +11,29 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
+    var usersession: UserSession!
+    var storageManager: StorageManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //app dependencies
         FirebaseApp.configure()
+        usersession = UserSession()
+        storageManager = StorageManager()
+        //window frame
+        window = UIWindow(frame: UIScreen.main.bounds)
+       // handle  logins
+        if let _ = usersession.getCurrentUser() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainVC = storyboard.instantiateViewController(withIdentifier: "MainScreen") as! MainTabController
+            window?.rootViewController = mainVC
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+            window?.rootViewController = loginVC
+        }
+
+        window?.makeKeyAndVisible()
         return true
     }
 

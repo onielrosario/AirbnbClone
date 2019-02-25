@@ -8,20 +8,28 @@
 
 import UIKit
 import MapKit
+import SwiftRangeSlider
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var priceRangeMinlabel: UILabel!
-    @IBOutlet weak var minSlider: UISlider!
-    @IBOutlet weak var priceRangeMaxLabel: UILabel!
-    @IBOutlet weak var maxRange: UISlider!
+    @IBOutlet weak var rangeSlider: RangeSlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         mapView.delegate = self
+        
+        self.locationNameLabel.text = "Search for location"
         setSearchBarColor()
+    }
+    
+    
+    @IBAction func rangeSliderChanged(_ sender: RangeSlider) {
+        print("valuve changed")
+        
     }
     
     private func setSearchBarColor() {

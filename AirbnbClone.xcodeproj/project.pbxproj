@@ -17,9 +17,21 @@
 		093277962218CA9300C95503 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277952218CA9300C95503 /* ProfileViewController.swift */; };
 		093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277982218CE1B00C95503 /* ActivityViewController.swift */; };
 		0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */; };
+		0944D17E2221F8E200C99455 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944D17D2221F8E200C99455 /* StorageManager.swift */; };
+		0944D1802221F8FD00C99455 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944D17F2221F8FD00C99455 /* StorageKeys.swift */; };
+		0944D1822221FF0000C99455 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944D1812221FF0000C99455 /* MainTabController.swift */; };
+		098CA1202223650800BCCFCF /* gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098CA11F2223650800BCCFCF /* gradients.swift */; };
 		09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */; };
 		09B073E22219C85A002947C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B073E12219C85A002947C6 /* CalendarViewController.swift */; };
 		09B073E62219DDFD002947C6 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B073E52219DDFD002947C6 /* CalendarCell.swift */; };
+		09EF30F6221CA26E00DF1222 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF30F5221CA26E00DF1222 /* ProfileTableViewCell.swift */; };
+		09EF30FE221CB6F200DF1222 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09EF30FD221CB6F200DF1222 /* Login.storyboard */; };
+		09EF3100221CB98500DF1222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF30FF221CB98500DF1222 /* LoginViewController.swift */; };
+		09EF3102221CBAF700DF1222 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF3101221CBAF700DF1222 /* LoginView.swift */; };
+		09EF3105221CBFD000DF1222 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF3104221CBFD000DF1222 /* UserSession.swift */; };
+		09EF3107221CC00500DF1222 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF3106221CC00500DF1222 /* DatabaseManager.swift */; };
+		09EF3109221CC04B00DF1222 /* DatabaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF3108221CC04A00DF1222 /* DatabaseKeys.swift */; };
+		09EF310C221CC0D100DF1222 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF310B221CC0D100DF1222 /* UserProfile.swift */; };
 		32305601C0E5C5F77188A865 /* Pods_AirbnbClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE3FDE432537BF5C642CD2 /* Pods_AirbnbClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,9 +48,21 @@
 		093277952218CA9300C95503 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		093277982218CE1B00C95503 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		0944D17D2221F8E200C99455 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		0944D17F2221F8FD00C99455 /* StorageKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		0944D1812221FF0000C99455 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		098CA11F2223650800BCCFCF /* gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradients.swift; sourceTree = "<group>"; };
 		09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09B073E12219C85A002947C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		09B073E52219DDFD002947C6 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		09EF30F5221CA26E00DF1222 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		09EF30FD221CB6F200DF1222 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		09EF30FF221CB98500DF1222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		09EF3101221CBAF700DF1222 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		09EF3104221CBFD000DF1222 /* UserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		09EF3106221CC00500DF1222 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		09EF3108221CC04A00DF1222 /* DatabaseKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseKeys.swift; sourceTree = "<group>"; };
+		09EF310B221CC0D100DF1222 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		0B5D868780AB656433F7272A /* Pods-AirbnbClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirbnbClone.release.xcconfig"; path = "Target Support Files/Pods-AirbnbClone/Pods-AirbnbClone.release.xcconfig"; sourceTree = "<group>"; };
 		E1A69BC771D53E3CF8C286EB /* Pods-AirbnbClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirbnbClone.debug.xcconfig"; path = "Target Support Files/Pods-AirbnbClone/Pods-AirbnbClone.debug.xcconfig"; sourceTree = "<group>"; };
 		F7DE3FDE432537BF5C642CD2 /* Pods_AirbnbClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirbnbClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,12 +101,15 @@
 		0904E3C32217768D00B4066E /* AirbnbClone */ = {
 			isa = PBXGroup;
 			children = (
+				09EF310A221CC0AB00DF1222 /* Models */,
+				09EF3103221CBFB600DF1222 /* Firebase Utilities */,
 				0932779A2218F2CC00C95503 /* extensions */,
 				093277972218CAA100C95503 /* Cells */,
 				093277922218C2F500C95503 /* Views */,
 				093277912218C2EC00C95503 /* Controllers */,
 				093277902218C2C800C95503 /* Supporting files */,
 				0904E3C82217768D00B4066E /* Main.storyboard */,
+				09EF30FD221CB6F200DF1222 /* Login.storyboard */,
 				0904E3D02217768E00B4066E /* Info.plist */,
 				0904E3D6221777DF00B4066E /* GoogleService-Info.plist */,
 			);
@@ -107,6 +134,8 @@
 				093277952218CA9300C95503 /* ProfileViewController.swift */,
 				093277982218CE1B00C95503 /* ActivityViewController.swift */,
 				09B073E12219C85A002947C6 /* CalendarViewController.swift */,
+				09EF30FF221CB98500DF1222 /* LoginViewController.swift */,
+				0944D1812221FF0000C99455 /* MainTabController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -114,6 +143,7 @@
 		093277922218C2F500C95503 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				09EF3101221CBAF700DF1222 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				09B073E52219DDFD002947C6 /* CalendarCell.swift */,
+				09EF30F5221CA26E00DF1222 /* ProfileTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -131,8 +162,29 @@
 			children = (
 				0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */,
 				09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */,
+				098CA11F2223650800BCCFCF /* gradients.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		09EF3103221CBFB600DF1222 /* Firebase Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				09EF3104221CBFD000DF1222 /* UserSession.swift */,
+				09EF3106221CC00500DF1222 /* DatabaseManager.swift */,
+				0944D17D2221F8E200C99455 /* StorageManager.swift */,
+				0944D17F2221F8FD00C99455 /* StorageKeys.swift */,
+				09EF3108221CC04A00DF1222 /* DatabaseKeys.swift */,
+			);
+			path = "Firebase Utilities";
+			sourceTree = "<group>";
+		};
+		09EF310A221CC0AB00DF1222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09EF310B221CC0D100DF1222 /* UserProfile.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		223F4D49F24E9786B8901A33 /* Pods */ = {
@@ -216,6 +268,7 @@
 				0904E3CF2217768E00B4066E /* LaunchScreen.storyboard in Resources */,
 				0904E3D7221777DF00B4066E /* GoogleService-Info.plist in Resources */,
 				0904E3CC2217768E00B4066E /* Assets.xcassets in Resources */,
+				09EF30FE221CB6F200DF1222 /* Login.storyboard in Resources */,
 				0904E3CA2217768D00B4066E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +312,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftRangeSlider/SwiftRangeSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -273,6 +327,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRangeSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -312,15 +367,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0944D17E2221F8E200C99455 /* StorageManager.swift in Sources */,
 				093277942218CA8600C95503 /* SavedViewController.swift in Sources */,
 				0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */,
+				0944D1822221FF0000C99455 /* MainTabController.swift in Sources */,
 				0904E3C72217768D00B4066E /* SearchViewController.swift in Sources */,
+				09EF30F6221CA26E00DF1222 /* ProfileTableViewCell.swift in Sources */,
 				09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */,
 				093277962218CA9300C95503 /* ProfileViewController.swift in Sources */,
+				09EF3107221CC00500DF1222 /* DatabaseManager.swift in Sources */,
+				09EF3102221CBAF700DF1222 /* LoginView.swift in Sources */,
+				09EF310C221CC0D100DF1222 /* UserProfile.swift in Sources */,
 				093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */,
+				09EF3109221CC04B00DF1222 /* DatabaseKeys.swift in Sources */,
 				09B073E22219C85A002947C6 /* CalendarViewController.swift in Sources */,
 				0904E3C52217768D00B4066E /* AppDelegate.swift in Sources */,
+				098CA1202223650800BCCFCF /* gradients.swift in Sources */,
 				09B073E62219DDFD002947C6 /* CalendarCell.swift in Sources */,
+				0944D1802221F8FD00C99455 /* StorageKeys.swift in Sources */,
+				09EF3105221CBFD000DF1222 /* UserSession.swift in Sources */,
+				09EF3100221CB98500DF1222 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

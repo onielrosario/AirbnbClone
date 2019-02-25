@@ -11,30 +11,30 @@ import CoreLocation
 
 struct UserProfile {
   let name: String
-  let review: String
-  let type: String
+  let email: String
+  let password: String
   let lat: Double
   let lon: Double
-  let reviewerId: String
+  let userId: String
   let dbReferenceDocumentId: String // reference to the race review document, useful for e.g deleting
   
-  init(name: String, review: String, type: String, lat: Double, lon: Double, reviewerId: String, dbReference: String) {
+  init(name: String, email: String, password: String, lat: Double, lon: Double, userId: String, dbReference: String) {
     self.name = name
-    self.review = review
-    self.type = type
+    self.email = email
+    self.password = password
     self.lat = lat
     self.lon = lon
-    self.reviewerId = reviewerId
+    self.userId = userId
     self.dbReferenceDocumentId = dbReference
   }
   
   init(dict: [String: Any]) {
-    self.name = dict["raceName"] as? String ?? "no race name"
-    self.review = dict["raceReview"] as? String ?? "no race review"
-    self.type = dict["raceType"] as? String ?? "other"
+    self.name = dict["name"] as? String ?? "no user name"
+    self.email = dict["email"] as? String ?? "no user email"
+    self.password = dict["password"] as? String ?? "other"
     self.lat = dict["latitude"] as? Double ?? 0
     self.lon = dict["longitude"] as? Double ?? 0
-    self.reviewerId = dict["reviewerId"] as? String ?? "no reviewerId"
+    self.userId = dict["userId"] as? String ?? "no user Id"
     self.dbReferenceDocumentId = dict["dbReference"] as? String ?? "no dbReference"
   }
   
