@@ -51,7 +51,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text,
             !searchText.isEmpty else {
-                showAlert(title: "", message: "Please enter a place name.")
+             showAlert(title: "missing fields", message: "name of place or location requited", actionTitle: "OK")
                 return }
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(searchText) { (placeMark, error) in
@@ -81,3 +81,5 @@ extension SearchViewController: MKMapViewDelegate {
         return annotationView
     }
 }
+
+
