@@ -48,7 +48,6 @@
 		093277952218CA9300C95503 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		093277982218CE1B00C95503 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		0932779B2218F33C00C95503 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
-		093578122224FD3400DAE532 /* AirbnbClone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AirbnbClone.entitlements; sourceTree = "<group>"; };
 		0944D17D2221F8E200C99455 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		0944D17F2221F8FD00C99455 /* StorageKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		0944D1812221FF0000C99455 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -102,7 +101,6 @@
 		0904E3C32217768D00B4066E /* AirbnbClone */ = {
 			isa = PBXGroup;
 			children = (
-				093578122224FD3400DAE532 /* AirbnbClone.entitlements */,
 				09EF310A221CC0AB00DF1222 /* Models */,
 				09EF3103221CBFB600DF1222 /* Firebase Utilities */,
 				0932779A2218F2CC00C95503 /* extensions */,
@@ -243,7 +241,7 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -540,7 +538,6 @@
 			baseConfigurationReference = E1A69BC771D53E3CF8C286EB /* Pods-AirbnbClone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AirbnbClone/AirbnbClone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AVC7FB3M8N;
 				INFOPLIST_FILE = AirbnbClone/Info.plist;
@@ -560,7 +557,6 @@
 			baseConfigurationReference = 0B5D868780AB656433F7272A /* Pods-AirbnbClone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AirbnbClone/AirbnbClone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AVC7FB3M8N;
 				INFOPLIST_FILE = AirbnbClone/Info.plist;

@@ -62,6 +62,18 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
                                         <real key="value" value="0.050000000000000003"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <real key="value" value="1000"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumDistance">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="rangeSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6Hl-if-JGS"/>
@@ -172,7 +184,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EeS-di-cvo" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
                                 <rect key="frame" x="0.0" y="146" width="375" height="300"/>
-                                <color key="backgroundColor" red="0.94622749090000002" green="0.62506037950000004" blue="0.51761823890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="idL-Ax-xJC"/>
                                 </constraints>
@@ -190,6 +202,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="87" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3G5-RD-UeX">
+                                                    <rect key="frame" x="23.5" y="25.5" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="it1-lY-vFs"/>
+                                                        <constraint firstAttribute="height" constant="40" id="lZp-5Z-maR"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bre-kn-YyE">
+                                                    <rect key="frame" x="23.5" y="25.5" width="40" height="40"/>
+                                                    <color key="backgroundColor" red="0.94622749090000002" green="0.62506037950000004" blue="0.51761823890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Qqk-O6-AOR"/>
+                                                        <constraint firstAttribute="height" constant="40" id="xwG-1T-qj3"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R77-uu-chM">
                                                     <rect key="frame" x="22.5" y="35" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -200,10 +238,16 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="R77-uu-chM" firstAttribute="centerX" secondItem="I7D-b7-ebG" secondAttribute="centerX" id="1Hf-x1-hL9"/>
+                                            <constraint firstItem="3G5-RD-UeX" firstAttribute="centerY" secondItem="I7D-b7-ebG" secondAttribute="centerY" id="2Nf-hw-MFZ"/>
+                                            <constraint firstItem="bre-kn-YyE" firstAttribute="centerX" secondItem="I7D-b7-ebG" secondAttribute="centerX" id="9iL-Sx-mOF"/>
                                             <constraint firstItem="R77-uu-chM" firstAttribute="centerY" secondItem="I7D-b7-ebG" secondAttribute="centerY" id="PJg-Xn-Hdm"/>
+                                            <constraint firstItem="3G5-RD-UeX" firstAttribute="centerX" secondItem="I7D-b7-ebG" secondAttribute="centerX" id="Upt-tn-Czu"/>
+                                            <constraint firstItem="bre-kn-YyE" firstAttribute="centerY" secondItem="I7D-b7-ebG" secondAttribute="centerY" id="tn4-ed-5q6"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="currentDay" destination="3G5-RD-UeX" id="gmg-zm-zhf"/>
                                             <outlet property="dateLabel" destination="R77-uu-chM" id="nKU-4o-1QB"/>
+                                            <outlet property="selectedView" destination="bre-kn-YyE" id="eYJ-ir-Ysk"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -333,7 +377,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="352.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Rm-Yq-KwM">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soloProjectImagePH" translatesAutoresizingMaskIntoConstraints="NO" id="4Rm-Yq-KwM">
                                                     <rect key="frame" x="94" y="29.5" width="187.5" height="187.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="4Rm-Yq-KwM" secondAttribute="height" multiplier="1:1" id="Nie-6B-2Ra"/>
@@ -479,6 +523,7 @@
         <image name="addfilled" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
         <image name="mapfiled" width="25" height="25"/>
+        <image name="soloProjectImagePH" width="500" height="500"/>
         <image name="user" width="25" height="25"/>
         <image name="userfilled" width="25" height="25"/>
     </resources>

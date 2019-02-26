@@ -14,19 +14,69 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
-    let formatter = DateFormatter()
+    let formatter: DateFormatter = {
+        let dateFormat = DateFormatter()
+        dateFormat.timeZone = Calendar.current.timeZone
+        dateFormat.locale = Calendar.current.locale
+        dateFormat.dateFormat = "yyyy MM dd"
+        return dateFormat
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendarView()
+        calendarCollectionView.scrollToDate(Date())
+        calendarCollectionView.visibleDates { dateSegment in
+            self.setUpCalendarViews(from: dateSegment)
+        }
+        
     }
     
+    
     func setupCalendarView() {
+        calendarCollectionView.minimumLineSpacing = 0
+        calendarCollectionView.minimumInteritemSpacing = 0
         //setup labeld
         self.navigationItem.leftBarButtonItem?.tintColor = .white
         calendarCollectionView.visibleDates { (visibleDate) in
             self.setUpCalendarViews(from: visibleDate)
         }
+        
+        
+        
     }
+    
+    func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
+        guard let cell = view as? CalendarCell else { return }
+        if cellState.isSelected {
+            cell.selectedView.isHidden = false
+        } else {
+            cell.selectedView.isHidden = true
+        }
+    }
+    
+    func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
+        guard let customCell = view as? CalendarCell else { return }
+        if cellState.isSelected {
+            customCell.dateLabel.textColor = .white
+        } else {
+            if cellState.dateBelongsTo == .thisMonth {
+                customCell.dateLabel.textColor = .black
+            } else {
+                customCell.isUserInteractionEnabled = false
+                customCell.dateLabel.textColor = .lightGray
+            }
+        }
+        let todaysDate = Date()
+        formatter.dateFormat = "d"
+        let todayString = formatter.string(from: todaysDate)
+        let monthDateString = formatter.string(from: cellState.date)
+        if todayString == monthDateString {
+            customCell.currentDay.isHidden = false
+        } else {
+            customCell.currentDay.isHidden = true
+        }
+    }
+    
     
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
@@ -35,19 +85,21 @@ class CalendarViewController: UIViewController {
     
     
     func setUpCalendarViews(from visibleDates: DateSegmentInfo) {
-        let date = visibleDates.monthDates.first!.date
+        guard let date = visibleDates.monthDates.first?.date else { return }
         self.formatter.dateFormat = "MMMM"
         self.monthLabel.text = self.formatter.string(from: date)
         self.formatter.dateFormat = "yyyy"
         self.yearLabel.text = self.formatter.string(from: date)
     }
-    
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource {
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "calendarCell", for: indexPath) as? CalendarCell else { return JTAppleCell() }
         cell.dateLabel.text = cellState.text
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+        
         return cell
     }
     
@@ -73,5 +125,15 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         
     }
     
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+        
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        handleCellSelected(view: cell, cellState: cellState)
+        handleCellTextColor(view: cell, cellState: cellState)
+    }
     
 }

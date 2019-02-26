@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
 let loginView = LoginView()
     private var tapGesture: UITapGestureRecognizer!
     private var accountLoginState = AccountStatus.newAccount
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(loginView)
@@ -31,9 +30,7 @@ let loginView = LoginView()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         usersession.userSessionAccountDelegate = self
         usersession.usersessionSignInDelegate = self
-        
     }
-
 }
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -88,7 +85,6 @@ extension LoginViewController: UserSessionAccountCreationDelegate {
         mainTabController.modalPresentationStyle = .overFullScreen
         self.present(mainTabController, animated: true)
     }
-    
 }
 
 extension LoginViewController: UserSessionSignInDelegate {
