@@ -24,9 +24,13 @@ let loginView = LoginView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(loginView)
+        loginView.delegate = self
         loginView.nameTextField.delegate = self
         loginView.emailTextField.delegate = self
         loginView.passwordTextField.delegate = self
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
+        usersession.userSessionAccountDelegate = self
+        usersession.usersessionSignInDelegate = self
         
     }
 
@@ -69,24 +73,30 @@ extension LoginViewController: loginViewDelegate {
 extension LoginViewController: UserSessionAccountCreationDelegate {
     func didCreateAccount(_ userSession: UserSession, user: User) {
         showAlert(title: "Account Created", message: "account created using: \(user.email ?? "no email entered")", style: .alert) { (alert) in
-
+          self.presentMainTabController()
         }
     }
     
     func didRecieveErrorCreatingAccount(_ userSession: UserSession, error: Error) {
+    showAlert(title: "Account creation error", message: error.localizedDescription, actionTitle: "try again")
+    }
     
+    private func presentMainTabController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabController = storyboard.instantiateViewController(withIdentifier: "MainScreen") as! MainTabController
+        mainTabController.modalTransitionStyle = .crossDissolve
+        mainTabController.modalPresentationStyle = .overFullScreen
+        self.present(mainTabController, animated: true)
     }
     
 }
 
 extension LoginViewController: UserSessionSignInDelegate {
     func didRecieveSignInError(_ usersession: UserSession, error: Error) {
-        
+        showAlert(title: "sign in error", message: error.localizedDescription, actionTitle: "try again")
     }
     
     func didSignInExistingUser(_ usersession: UserSession, user: User) {
-        <#code#>
+        self.presentMainTabController()
     }
-    
-    
 }
