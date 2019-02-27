@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
-    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profilePicture: UIButton!
     @IBOutlet weak var profileName: UILabel!
    
     
@@ -21,6 +21,11 @@ class ProfileTableViewCell: UITableViewCell {
     }
 
 
-
+    @IBAction func ProfileButtonPressed(_ sender: UIButton) {
+        print("profile button pressed")
+        
+        
+    }
+    
 
 }

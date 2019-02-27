@@ -20,6 +20,10 @@
 		0944D17E2221F8E200C99455 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944D17D2221F8E200C99455 /* StorageManager.swift */; };
 		0944D1802221F8FD00C99455 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944D17F2221F8FD00C99455 /* StorageKeys.swift */; };
 		0944D1822221FF0000C99455 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0944D1812221FF0000C99455 /* MainTabController.swift */; };
+		095EAF562227043B008A3AB9 /* IBDesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095EAF552227043B008A3AB9 /* IBDesignableViews.swift */; };
+		095EAF5822270DEE008A3AB9 /* NewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095EAF5722270DEE008A3AB9 /* NewPostController.swift */; };
+		095EAF5A222720B1008A3AB9 /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095EAF59222720B1008A3AB9 /* DescriptionController.swift */; };
+		095EAF5C22272583008A3AB9 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095EAF5B22272583008A3AB9 /* LocationViewController.swift */; };
 		098CA1202223650800BCCFCF /* gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098CA11F2223650800BCCFCF /* gradients.swift */; };
 		09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */; };
 		09B073E22219C85A002947C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B073E12219C85A002947C6 /* CalendarViewController.swift */; };
@@ -51,6 +55,10 @@
 		0944D17D2221F8E200C99455 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		0944D17F2221F8FD00C99455 /* StorageKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		0944D1812221FF0000C99455 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		095EAF552227043B008A3AB9 /* IBDesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableViews.swift; sourceTree = "<group>"; };
+		095EAF5722270DEE008A3AB9 /* NewPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostController.swift; sourceTree = "<group>"; };
+		095EAF59222720B1008A3AB9 /* DescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
+		095EAF5B22272583008A3AB9 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		098CA11F2223650800BCCFCF /* gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradients.swift; sourceTree = "<group>"; };
 		09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09B073E12219C85A002947C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +144,9 @@
 				09B073E12219C85A002947C6 /* CalendarViewController.swift */,
 				09EF30FF221CB98500DF1222 /* LoginViewController.swift */,
 				0944D1812221FF0000C99455 /* MainTabController.swift */,
+				095EAF5722270DEE008A3AB9 /* NewPostController.swift */,
+				095EAF5B22272583008A3AB9 /* LocationViewController.swift */,
+				095EAF59222720B1008A3AB9 /* DescriptionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -144,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				09EF3101221CBAF700DF1222 /* LoginView.swift */,
+				095EAF552227043B008A3AB9 /* IBDesignableViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095EAF562227043B008A3AB9 /* IBDesignableViews.swift in Sources */,
 				0944D17E2221F8E200C99455 /* StorageManager.swift in Sources */,
 				093277942218CA8600C95503 /* SavedViewController.swift in Sources */,
 				0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */,
@@ -381,15 +394,18 @@
 				09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */,
 				093277962218CA9300C95503 /* ProfileViewController.swift in Sources */,
 				09EF3107221CC00500DF1222 /* DatabaseManager.swift in Sources */,
+				095EAF5822270DEE008A3AB9 /* NewPostController.swift in Sources */,
 				09EF3102221CBAF700DF1222 /* LoginView.swift in Sources */,
 				09EF310C221CC0D100DF1222 /* UserProfile.swift in Sources */,
 				093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */,
 				09EF3109221CC04B00DF1222 /* DatabaseKeys.swift in Sources */,
+				095EAF5C22272583008A3AB9 /* LocationViewController.swift in Sources */,
 				09B073E22219C85A002947C6 /* CalendarViewController.swift in Sources */,
 				0904E3C52217768D00B4066E /* AppDelegate.swift in Sources */,
 				098CA1202223650800BCCFCF /* gradients.swift in Sources */,
 				09B073E62219DDFD002947C6 /* CalendarCell.swift in Sources */,
 				0944D1802221F8FD00C99455 /* StorageKeys.swift in Sources */,
+				095EAF5A222720B1008A3AB9 /* DescriptionController.swift in Sources */,
 				09EF3105221CBFD000DF1222 /* UserSession.swift in Sources */,
 				09EF3100221CB98500DF1222 /* LoginViewController.swift in Sources */,
 			);

@@ -16,19 +16,24 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var priceRangeMinlabel: UILabel!
     @IBOutlet weak var rangeSlider: RangeSlider!
+    @IBOutlet weak var priceRangeValueLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         mapView.delegate = self
-        
+       
+        priceRangeValueLabel.text = "$20 - $1,000+"
         self.locationNameLabel.text = "Search for location"
         setSearchBarColor()
     }
     
     
     @IBAction func rangeSliderChanged(_ sender: RangeSlider) {
-        print("valuve changed")
+        let maxValue = Int(sender.upperValue)
+        let minValue = Int(sender.lowerValue)
+        self.priceRangeValueLabel.text = "$\(minValue) - $\(maxValue)"
+        
         
     }
     

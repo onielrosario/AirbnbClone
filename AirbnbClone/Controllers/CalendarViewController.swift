@@ -21,6 +21,8 @@ class CalendarViewController: UIViewController {
         dateFormat.dateFormat = "yyyy MM dd"
         return dateFormat
     }()
+    var firstDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCalendarView()
@@ -28,6 +30,8 @@ class CalendarViewController: UIViewController {
         calendarCollectionView.visibleDates { dateSegment in
             self.setUpCalendarViews(from: dateSegment)
         }
+        calendarCollectionView.allowsMultipleSelection = true
+        calendarCollectionView.isRangeSelectionUsed = true
         
     }
     
@@ -56,18 +60,20 @@ class CalendarViewController: UIViewController {
     
     func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
         guard let customCell = view as? CalendarCell else { return }
+         let todaysDate = Date()
         if cellState.isSelected {
             customCell.dateLabel.textColor = .white
         } else {
             if cellState.dateBelongsTo == .thisMonth {
                 customCell.dateLabel.textColor = .black
+                customCell.isUserInteractionEnabled = true
             } else {
                 customCell.isUserInteractionEnabled = false
                 customCell.dateLabel.textColor = .lightGray
             }
         }
-        let todaysDate = Date()
-        formatter.dateFormat = "d"
+        
+        formatter.dateFormat = "MMM dd"
         let todayString = formatter.string(from: todaysDate)
         let monthDateString = formatter.string(from: cellState.date)
         if todayString == monthDateString {
@@ -75,6 +81,19 @@ class CalendarViewController: UIViewController {
         } else {
             customCell.currentDay.isHidden = true
         }
+   formatter.dateFormat = "d"
+        let todaysDay = formatter.string(from: todaysDate)
+        if let myDate = customCell.dateLabel.text {
+            guard let myDateNumber = Int(myDate) else { return }
+            guard let todayDateNumber = Int(todaysDay) else { return }
+            if myDateNumber < todayDateNumber {
+                customCell.isUserInteractionEnabled = false
+            } else  {
+                customCell.isUserInteractionEnabled = true
+            }
+        }
+        
+        
     }
     
     
@@ -126,9 +145,12 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        if firstDate != nil {
+            calendar.selectDates(from: firstDate!, to: date, triggerSelectionDelegate: false, keepSelectionIfMultiSelectionAllowed: true)
+        } else {
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
-        
+        }
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -136,4 +158,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         handleCellTextColor(view: cell, cellState: cellState)
     }
     
+    func scrollDidEndDecelerating(for calendar: JTAppleCalendarView) {
+        
+    }
 }

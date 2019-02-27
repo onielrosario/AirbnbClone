@@ -11,7 +11,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var profileTableView: UITableView!
-    
+  
+    @IBOutlet weak var newPost: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,14 @@ class ProfileViewController: UIViewController {
         profileTableView.delegate = self
         
     }
+    
+    @IBAction func newPostButtonPressed(_ sender: UIButton) {
+        
+        print("new post pressed")
+        
+    }
+    
+    
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -38,4 +47,5 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
+    
 }
