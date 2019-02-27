@@ -447,7 +447,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ede-Pf-qhy"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8aR-58-JEJ"/>
+                    <navigationItem key="navigationItem" id="8aR-58-JEJ">
+                        <barButtonItem key="rightBarButtonItem" title="SignOut" id="tj4-M2-oeY">
+                            <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="signOutPressed:" destination="RDi-vy-3oV" id="NEe-6Z-omx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="newPost" destination="bYw-HH-uj6" id="YZj-OH-bx4"/>
                         <outlet property="profileTableView" destination="gvK-U1-EsP" id="yat-XT-LNU"/>

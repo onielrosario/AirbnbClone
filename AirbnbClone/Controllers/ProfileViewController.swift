@@ -10,14 +10,21 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    private var usersession: UserSession!
+     private var storagemanager: StorageManager!
     @IBOutlet weak var profileTableView: UITableView!
   
     @IBOutlet weak var newPost: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
+        storagemanager = (UIApplication.shared.delegate as! AppDelegate).storageManager
         profileTableView.dataSource = self
         profileTableView.delegate = self
+        
+        usersession.usersessionSignOutDelegate = self
+        storagemanager.delegate = self
         
     }
     
@@ -30,6 +37,11 @@ class ProfileViewController: UIViewController {
     }
     
     
+    @IBAction func signOutPressed(_ sender: UIBarButtonItem) {
+        usersession.signOut()
+    }
+    
+    
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -39,6 +51,13 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
+        let user = usersession.getCurrentUser()
+        if user != nil {
+            cell.profileName.text = user?.email
+        } else {
+            cell.profileName.text = "no user logged in"
+        }
+        
         return cell
     }
     
@@ -49,5 +68,23 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
+    
+}
+
+extension ProfileViewController: UserSessionSignOutDelegate {
+    func didRecieveSignOutError(_ usersession: UserSession, error: Error) {
+        
+    }
+    
+    func didSignOutUser(_ usersession: UserSession) {
+        
+    }
+}
+
+extension ProfileViewController: StorageManagerDelegate {
+    func didFetchImage(_ storageManager: StorageManager, imageURL: URL) {
+        
+    }
+    
     
 }
