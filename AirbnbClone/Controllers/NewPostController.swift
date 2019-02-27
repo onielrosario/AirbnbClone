@@ -26,7 +26,10 @@ class NewPostController: UIViewController {
     }
     
     @IBAction func addInfoPressed(_ sender: UIButton) {
-        print("add info pressed")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let postVC = storyboard.instantiateViewController(withIdentifier: "DescriptionVC") as? DescriptionController else { return }
+       navigationController?.modalPresentationStyle = .overCurrentContext
+        present(postVC, animated: true, completion: nil)
     }
     
     @IBAction func LocationPressed(_ sender: UIButton) {
@@ -35,8 +38,7 @@ class NewPostController: UIViewController {
     
     
     @IBAction func donePressed(_ sender: UIButton) {
-        print("Done Pressed")
-        self.dismiss(animated: true, completion: nil)
+      navigationController?.popViewController(animated: true)
     }
     
     

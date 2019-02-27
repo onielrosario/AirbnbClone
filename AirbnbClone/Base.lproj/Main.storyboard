@@ -374,7 +374,7 @@
         <!--Profile View Controller-->
         <scene sceneID="Mb9-C2-3ii">
             <objects>
-                <viewController id="RDi-vy-3oV" customClass="ProfileViewController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" id="RDi-vy-3oV" customClass="ProfileViewController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pm0-81-TSI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -612,18 +612,17 @@
         <!--Description Controller-->
         <scene sceneID="n8t-gy-Qn2">
             <objects>
-                <viewController id="cEf-zZ-bJl" customClass="DescriptionController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="CqG-oY-VEK">
+                <viewController storyboardIdentifier="DescriptionVC" id="cEf-zZ-bJl" customClass="DescriptionController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CqG-oY-VEK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfX-0P-itX">
                                 <rect key="frame" x="37.5" y="177" width="300" height="333.5"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-RD-l5n">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter place description..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-RD-l5n">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="333.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -654,7 +653,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WfX-0P-itX" firstAttribute="top" secondItem="bEn-3l-GlJ" secondAttribute="bottom" constant="8" id="0Cw-M2-oOX"/>
                             <constraint firstItem="WfX-0P-itX" firstAttribute="centerX" secondItem="HTe-c1-AU4" secondAttribute="centerX" id="168-qD-bsR"/>

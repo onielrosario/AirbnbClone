@@ -23,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window frame
         window = UIWindow(frame: UIScreen.main.bounds)
        // handle  logins
+        
+        
+//        try? Auth.auth().signOut()
+        
         if let _ = usersession.getCurrentUser() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainVC = storyboard.instantiateViewController(withIdentifier: "MainScreen") as! MainTabController

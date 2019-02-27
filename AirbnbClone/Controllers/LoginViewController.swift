@@ -52,7 +52,7 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension LoginViewController: loginViewDelegate {
     func didSelectLoginButton(_ loginView: LoginView, accountState: AccountStatus) {
-        guard let email = loginView.nameTextField.text,
+        guard let email = loginView.emailTextField.text,
         let password = loginView.passwordTextField.text,
             !email.isEmpty, !password.isEmpty else {
                showAlert(title: "missing required fields", message: "email and password required", actionTitle: "try again")
