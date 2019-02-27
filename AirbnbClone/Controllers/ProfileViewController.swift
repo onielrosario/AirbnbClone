@@ -22,7 +22,9 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func newPostButtonPressed(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let postVC = storyboard.instantiateViewController(withIdentifier: "NewPostVC") as? NewPostController else { return }
+       navigationController?.pushViewController(postVC, animated: true)
         print("new post pressed")
         
     }

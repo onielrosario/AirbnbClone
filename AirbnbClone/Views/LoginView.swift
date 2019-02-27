@@ -101,6 +101,10 @@ class LoginView: UIView {
         delegate?.didSelectLoginButton(self, accountState: accountLoginState)
     }
     
+    
+    
+    
+    
     @objc private func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         accountLoginState = accountLoginState == .newAccount ? .existingAccount : .newAccount
         switch accountLoginState {
