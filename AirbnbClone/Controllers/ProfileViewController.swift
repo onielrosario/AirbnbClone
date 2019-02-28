@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
             self.profileTableView.reloadData()
         }
     }
+    private var name: String!
     private lazy var imagePickerController: UIImagePickerController = {
         let ip = UIImagePickerController()
         ip.allowsEditing = true
@@ -58,6 +59,7 @@ class ProfileViewController: UIViewController {
         if user != nil {
             if let image = ImageCache.shared.fetchImageFromCache(urlString: user?.photoURL?.absoluteString ?? "no photo") {
               self.profileImage = image
+                self.name = user?.email
             } else {
                 activity.modalPresentationStyle = .overCurrentContext
                 present(activity, animated: true, completion: nil)
@@ -66,6 +68,7 @@ class ProfileViewController: UIViewController {
                         print(error)
                     } else if let image = image {
                       self.profileImage = image
+                        self.name = user?.email
                         activity.dismiss(animated: true, completion: nil)
                     }
                 }
@@ -113,6 +116,7 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
         cell.profilePicture.setImage(profileImage, for: .normal)
+        cell.profileName.text = name
         cell.delegate = self
         return cell
     }
