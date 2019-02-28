@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol SenderButtonDelegate: AnyObject {
+    func sender()
+}
+
 class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePicture: UIButton!
     @IBOutlet weak var profileName: UILabel!
-   
+    weak var delegate: SenderButtonDelegate?
     
     
     override func layoutSubviews() {
@@ -20,12 +24,7 @@ class ProfileTableViewCell: UITableViewCell {
         profilePicture.clipsToBounds = true
     }
 
-
     @IBAction func ProfileButtonPressed(_ sender: UIButton) {
-        print("profile button pressed")
-        
-        
+        delegate?.sender()
     }
-    
-
 }

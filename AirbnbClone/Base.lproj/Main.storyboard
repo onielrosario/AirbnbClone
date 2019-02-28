@@ -699,11 +699,11 @@
             </objects>
             <point key="canvasLocation" x="2428" y="-765"/>
         </scene>
-        <!--View Controller-->
+        <!--Activity View Controller-->
         <scene sceneID="eMe-ij-UYq">
             <objects>
-                <viewController id="XRf-VK-d6k" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xf7-yt-BXc">
+                <viewController storyboardIdentifier="ActivityVC" id="XRf-VK-d6k" customClass="ActivityViewController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Xf7-yt-BXc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

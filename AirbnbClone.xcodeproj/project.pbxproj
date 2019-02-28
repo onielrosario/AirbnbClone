@@ -28,6 +28,12 @@
 		09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */; };
 		09B073E22219C85A002947C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B073E12219C85A002947C6 /* CalendarViewController.swift */; };
 		09B073E62219DDFD002947C6 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B073E52219DDFD002947C6 /* CalendarCell.swift */; };
+		09E7A2F2222859780029FB60 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7A2F1222859770029FB60 /* ImageCache.swift */; };
+		09E7A2F422285DC60029FB60 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7A2F322285DC60029FB60 /* AppError.swift */; };
+		09E7A2F622285DD60029FB60 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7A2F522285DD60029FB60 /* NetworkHelper.swift */; };
+		09E7A2F822288D6F0029FB60 /* LocationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7A2F722288D6F0029FB60 /* LocationResultsViewController.swift */; };
+		09E7A2FA22288D8A0029FB60 /* LocationResults.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E7A2F922288D8A0029FB60 /* LocationResults.storyboard */; };
+		09E7A2FC2228914E0029FB60 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E7A2FB2228914E0029FB60 /* LocationService.swift */; };
 		09EF30F6221CA26E00DF1222 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF30F5221CA26E00DF1222 /* ProfileTableViewCell.swift */; };
 		09EF30FE221CB6F200DF1222 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09EF30FD221CB6F200DF1222 /* Login.storyboard */; };
 		09EF3100221CB98500DF1222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF30FF221CB98500DF1222 /* LoginViewController.swift */; };
@@ -63,6 +69,12 @@
 		09A11ACD221A6B8200D1606B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09B073E12219C85A002947C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		09B073E52219DDFD002947C6 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		09E7A2F1222859770029FB60 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		09E7A2F322285DC60029FB60 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		09E7A2F522285DD60029FB60 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		09E7A2F722288D6F0029FB60 /* LocationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultsViewController.swift; sourceTree = "<group>"; };
+		09E7A2F922288D8A0029FB60 /* LocationResults.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationResults.storyboard; sourceTree = "<group>"; };
+		09E7A2FB2228914E0029FB60 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		09EF30F5221CA26E00DF1222 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		09EF30FD221CB6F200DF1222 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		09EF30FF221CB98500DF1222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +121,7 @@
 		0904E3C32217768D00B4066E /* AirbnbClone */ = {
 			isa = PBXGroup;
 			children = (
+				09E7A2F02228595E0029FB60 /* Network helpers */,
 				09EF310A221CC0AB00DF1222 /* Models */,
 				09EF3103221CBFB600DF1222 /* Firebase Utilities */,
 				0932779A2218F2CC00C95503 /* extensions */,
@@ -117,6 +130,7 @@
 				093277912218C2EC00C95503 /* Controllers */,
 				093277902218C2C800C95503 /* Supporting files */,
 				0904E3C82217768D00B4066E /* Main.storyboard */,
+				09E7A2F922288D8A0029FB60 /* LocationResults.storyboard */,
 				09EF30FD221CB6F200DF1222 /* Login.storyboard */,
 				0904E3D02217768E00B4066E /* Info.plist */,
 				0904E3D6221777DF00B4066E /* GoogleService-Info.plist */,
@@ -146,6 +160,7 @@
 				0944D1812221FF0000C99455 /* MainTabController.swift */,
 				095EAF5722270DEE008A3AB9 /* NewPostController.swift */,
 				095EAF5B22272583008A3AB9 /* LocationViewController.swift */,
+				09E7A2F722288D6F0029FB60 /* LocationResultsViewController.swift */,
 				095EAF59222720B1008A3AB9 /* DescriptionController.swift */,
 			);
 			path = Controllers;
@@ -177,6 +192,17 @@
 				098CA11F2223650800BCCFCF /* gradients.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		09E7A2F02228595E0029FB60 /* Network helpers */ = {
+			isa = PBXGroup;
+			children = (
+				09E7A2FB2228914E0029FB60 /* LocationService.swift */,
+				09E7A2F522285DD60029FB60 /* NetworkHelper.swift */,
+				09E7A2F1222859770029FB60 /* ImageCache.swift */,
+				09E7A2F322285DC60029FB60 /* AppError.swift */,
+			);
+			path = "Network helpers";
 			sourceTree = "<group>";
 		};
 		09EF3103221CBFB600DF1222 /* Firebase Utilities */ = {
@@ -286,6 +312,7 @@
 				0904E3D7221777DF00B4066E /* GoogleService-Info.plist in Resources */,
 				0904E3CC2217768E00B4066E /* Assets.xcassets in Resources */,
 				09EF30FE221CB6F200DF1222 /* Login.storyboard in Resources */,
+				09E7A2FA22288D8A0029FB60 /* LocationResults.storyboard in Resources */,
 				0904E3CA2217768D00B4066E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,12 +415,15 @@
 				0944D17E2221F8E200C99455 /* StorageManager.swift in Sources */,
 				093277942218CA8600C95503 /* SavedViewController.swift in Sources */,
 				0932779C2218F33C00C95503 /* UIViewController+Alerts.swift in Sources */,
+				09E7A2F422285DC60029FB60 /* AppError.swift in Sources */,
 				0944D1822221FF0000C99455 /* MainTabController.swift in Sources */,
 				0904E3C72217768D00B4066E /* SearchViewController.swift in Sources */,
 				09EF30F6221CA26E00DF1222 /* ProfileTableViewCell.swift in Sources */,
 				09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */,
 				093277962218CA9300C95503 /* ProfileViewController.swift in Sources */,
+				09E7A2F622285DD60029FB60 /* NetworkHelper.swift in Sources */,
 				09EF3107221CC00500DF1222 /* DatabaseManager.swift in Sources */,
+				09E7A2F2222859780029FB60 /* ImageCache.swift in Sources */,
 				095EAF5822270DEE008A3AB9 /* NewPostController.swift in Sources */,
 				09EF3102221CBAF700DF1222 /* LoginView.swift in Sources */,
 				09EF310C221CC0D100DF1222 /* UserProfile.swift in Sources */,
@@ -405,6 +435,8 @@
 				098CA1202223650800BCCFCF /* gradients.swift in Sources */,
 				09B073E62219DDFD002947C6 /* CalendarCell.swift in Sources */,
 				0944D1802221F8FD00C99455 /* StorageKeys.swift in Sources */,
+				09E7A2F822288D6F0029FB60 /* LocationResultsViewController.swift in Sources */,
+				09E7A2FC2228914E0029FB60 /* LocationService.swift in Sources */,
 				095EAF5A222720B1008A3AB9 /* DescriptionController.swift in Sources */,
 				09EF3105221CBFD000DF1222 /* UserSession.swift in Sources */,
 				09EF3100221CB98500DF1222 /* LoginViewController.swift in Sources */,

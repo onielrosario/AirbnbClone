@@ -18,7 +18,7 @@ struct UserProfile {
   let userId: String
   let dbReferenceDocumentId: String // reference to the race review document, useful for e.g deleting
   
-  init(name: String, email: String, password: String, lat: Double, lon: Double, userId: String, dbReference: String) {
+    init(name: String, email: String, password: String, lat: Double, lon: Double, userId: String, dbReference: String) {
     self.name = name
     self.email = email
     self.password = password

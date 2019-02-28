@@ -81,6 +81,7 @@ class CalendarViewController: UIViewController {
         } else {
             customCell.currentDay.isHidden = true
         }
+        
    formatter.dateFormat = "d"
         let todaysDay = formatter.string(from: todaysDate)
         if let myDate = customCell.dateLabel.text {
@@ -92,8 +93,6 @@ class CalendarViewController: UIViewController {
                 customCell.isUserInteractionEnabled = true
             }
         }
-        
-        
     }
     
     
@@ -145,11 +144,13 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        if firstDate != nil {
-            calendar.selectDates(from: firstDate!, to: date, triggerSelectionDelegate: false, keepSelectionIfMultiSelectionAllowed: true)
-        } else {
+//       guard let customcell = cell as? CalendarCell else { return }
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
+        if firstDate != nil {
+            self.calendarCollectionView.selectDates(from: firstDate!, to: date, triggerSelectionDelegate: false, keepSelectionIfMultiSelectionAllowed: true)
+        } else {
+            firstDate = date
         }
     }
     

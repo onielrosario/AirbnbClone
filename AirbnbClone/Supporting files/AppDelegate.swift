@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var usersession: UserSession!
     var storageManager: StorageManager!
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //app dependencies
         FirebaseApp.configure()
@@ -22,11 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         storageManager = StorageManager()
         //window frame
         window = UIWindow(frame: UIScreen.main.bounds)
-       // handle  logins
-        
-        
-//        try? Auth.auth().signOut()
-        
         if let _ = usersession.getCurrentUser() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainVC = storyboard.instantiateViewController(withIdentifier: "MainScreen") as! MainTabController
