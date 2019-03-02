@@ -27,4 +27,5 @@ class ProfileTableViewCell: UITableViewCell {
     @IBAction func ProfileButtonPressed(_ sender: UIButton) {
         delegate?.sender()
     }
+    
 }

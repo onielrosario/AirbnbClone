@@ -12,16 +12,16 @@ import CoreLocation
 struct UserProfile {
   let name: String
   let email: String
-  let password: String
+    let imageurl: String
   let lat: Double
   let lon: Double
   let userId: String
   let dbReferenceDocumentId: String // reference to the race review document, useful for e.g deleting
   
-    init(name: String, email: String, password: String, lat: Double, lon: Double, userId: String, dbReference: String) {
+    init(name: String, email: String,imageurl: String, lat: Double, lon: Double, userId: String, dbReference: String) {
     self.name = name
     self.email = email
-    self.password = password
+        self.imageurl = imageurl
     self.lat = lat
     self.lon = lon
     self.userId = userId
@@ -29,9 +29,9 @@ struct UserProfile {
   }
   
   init(dict: [String: Any]) {
-    self.name = dict["name"] as? String ?? "no user name"
+    self.name = dict["username"] as? String ?? "no user name"
     self.email = dict["email"] as? String ?? "no user email"
-    self.password = dict["password"] as? String ?? "other"
+    self.imageurl = dict["imageURL"] as? String ?? "no photo url"
     self.lat = dict["latitude"] as? Double ?? 0
     self.lon = dict["longitude"] as? Double ?? 0
     self.userId = dict["userId"] as? String ?? "no user Id"

@@ -9,12 +9,21 @@
 import UIKit
 import MapKit
 
+
+protocol NewPostAdressLocationDelegate: AnyObject {
+    func newPostAddress(addressTittle: String, coordinate: CLLocationCoordinate2D)
+}
+
+
 class LocationViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
+    weak var delegate: NewPostAdressLocationDelegate?
+    private var address = ""
     private var locationResultsController: LocationResultsViewController = {
-       let storyboard = UIStoryboard(name: "LocationResults", bundle: nil)
+        let storyboard = UIStoryboard(name: "LocationResults", bundle: nil)
         let locationMainController = storyboard.instantiateViewController(withIdentifier: "LocationResultsVC") as! LocationResultsViewController
         return locationMainController
+        
     }()
     
     private lazy var searchBarController: UISearchController = {
@@ -33,28 +42,54 @@ class LocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-mapView.delegate = self
-locationResultsController.delegate = self
-        navigationController?.navigationBar.prefersLargeTitles = true
-//       navigationItem.largeTitleDisplayMode = .automatic
+        mapView.delegate = self
+        locationResultsController.delegate = self
+        locationResultsController.updateDelegate = self
+        navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.searchController = searchBarController
         title = "Address"
     }
-    
 }
 
+
+
 extension LocationViewController: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let location = view.annotation?.coordinate {
+            if let locationTitle = view.annotation?.title {
+                showAlert(title: "Location Selected", message: locationTitle, style: .alert) { (alert) in
+                    self.delegate?.newPostAddress(addressTittle: locationTitle!, coordinate: location)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        
+    }
 }
 
 extension LocationViewController: LocationResultsControllerDelegate {
     func didSelectCoordinate(_ locationResultsController: LocationResultsViewController, coordinate: CLLocationCoordinate2D) {
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1400, longitudinalMeters: 1400)
-        mapView.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1400, longitudinalMeters: 1400)
+        self.mapView.setRegion(region, animated: true)
+        annotation.title = self.address
+        self.mapView.addAnnotation(annotation)
+        self.mapView.selectAnnotation(annotation, animated: true)
+        
     }
     
     func didScrollTableView(_ locationResultsController: LocationResultsViewController) {
         searchBarController.searchBar.resignFirstResponder()
+    }
+}
+
+extension LocationViewController: UpdateAddressPostControllerDelegate {
+    func UpdatePostAdress(addressTittle: String, addressSubtittle: String) {
+        self.address = """
+        \(addressTittle),
+        \(addressSubtittle)
+        """
     }
     
     

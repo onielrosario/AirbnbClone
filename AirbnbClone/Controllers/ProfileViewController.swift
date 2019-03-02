@@ -8,9 +8,15 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ProfileViewController: UIViewController {
     private var usersession: UserSession!
+    private var user: UserProfile? {
+        didSet {
+            self.profileTableView.reloadData()
+        }
+    }
      private var storagemanager: StorageManager!
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var newPost: UIButton!
@@ -19,6 +25,7 @@ class ProfileViewController: UIViewController {
             self.profileTableView.reloadData()
         }
     }
+    private var listener: ListenerRegistration!
     private var name: String!
     private lazy var imagePickerController: UIImagePickerController = {
         let ip = UIImagePickerController()
@@ -34,8 +41,8 @@ class ProfileViewController: UIViewController {
         profileTableView.delegate = self
         usersession.usersessionSignOutDelegate = self
         storagemanager.delegate = self
+        getUserProfile()
         updateImage()
-    
     }
     
     
@@ -44,6 +51,28 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(true)
         updateImage()
     }
+    
+    
+    private func getUserProfile() {
+        let user = usersession.getCurrentUser()
+        if let uid = user?.uid {
+            let docRef = DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey).document(uid)
+            docRef.getDocument { (document, error) in
+                DispatchQueue.main.async {
+                if let user = document.flatMap({
+                    $0.data().flatMap({ (data) in
+                        return UserProfile(dict: data)
+                    })
+                }) {
+                    self.user = user
+                } else {
+                    print("user does not exist")
+                }
+                }}
+        }
+    }
+
+    
     
     @IBAction func newPostButtonPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -54,13 +83,12 @@ class ProfileViewController: UIViewController {
     private func updateImage() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let activity = storyboard.instantiateViewController(withIdentifier: "ActivityVC") as! ActivityViewController
-    
         let user = usersession.getCurrentUser()
         if user != nil {
-            if let image = ImageCache.shared.fetchImageFromCache(urlString: user?.photoURL?.absoluteString ?? "no photo") {
+            if let image = ImageCache.shared.fetchImageFromCache(urlString: user?.photoURL?.absoluteString ?? "no photo url") {
               self.profileImage = image
-                self.name = user?.email
-            } else {
+          
+            }  else {
                 activity.modalPresentationStyle = .overCurrentContext
                 present(activity, animated: true, completion: nil)
                 ImageCache.shared.fetchImageFromNetwork(urlString: user?.photoURL?.absoluteString ?? "no photo") { (error, image) in
@@ -68,12 +96,13 @@ class ProfileViewController: UIViewController {
                         print(error)
                     } else if let image = image {
                       self.profileImage = image
-                        self.name = user?.email
                         activity.dismiss(animated: true, completion: nil)
                     }
                 }
             }
         } else {
+            self.profileImage = UIImage(named: "locationPlaceholder")
+            activity.dismiss(animated: true, completion: nil)
            print("no user logged in")
         }
     }
@@ -116,7 +145,11 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
         cell.profilePicture.setImage(profileImage, for: .normal)
-        cell.profileName.text = name
+        if let currentUser = user {
+              cell.profileName.text = currentUser.name
+        } else {
+            cell.profileName.text = "no name"
+        }
         cell.delegate = self
         return cell
     }

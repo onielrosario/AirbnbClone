@@ -14,17 +14,21 @@ protocol LocationResultsControllerDelegate: AnyObject {
     func didScrollTableView(_ locationResultsController: LocationResultsViewController)
 }
 
+protocol UpdateAddressPostControllerDelegate: AnyObject {
+    func UpdatePostAdress(addressTittle: String, addressSubtittle: String)
+}
+
 class LocationResultsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var searchCompleter = MKLocalSearchCompleter()
     private var completions = [MKLocalSearchCompletion]()
     weak var delegate: LocationResultsControllerDelegate?
+    weak var updateDelegate: UpdateAddressPostControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 tableView.dataSource = self
         tableView.delegate = self
         searchCompleter.delegate = self
-        
     }
 }
 
@@ -40,6 +44,7 @@ extension LocationResultsViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = suggestion.subtitle
         return cell
     }
+    
 }
 
 extension LocationResultsViewController: UITableViewDelegate {
@@ -50,6 +55,7 @@ extension LocationResultsViewController: UITableViewDelegate {
             if let error = error {
                 print("error in coordinate:n \(error)")
             } else  {
+                self.updateDelegate?.UpdatePostAdress(addressTittle: suggestion.title, addressSubtittle: suggestion.subtitle)
                 self.delegate?.didSelectCoordinate(self, coordinate: coordinate)
             }
         }

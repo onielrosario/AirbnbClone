@@ -42,7 +42,7 @@ extension LoginViewController: UITextFieldDelegate {
         }
         switch accountLoginState {
         case .newAccount:
-          usersession.createNewAccount(email: email, password: password)
+            usersession.createNewAccount(name: name, email: email, password: password)
         case .existingAccount:
            usersession.signInExistingUser(email: email, password: password)
         }
@@ -54,13 +54,14 @@ extension LoginViewController: loginViewDelegate {
     func didSelectLoginButton(_ loginView: LoginView, accountState: AccountStatus) {
         guard let email = loginView.emailTextField.text,
         let password = loginView.passwordTextField.text,
-            !email.isEmpty, !password.isEmpty else {
+            let name = loginView.nameTextField.text,
+            !name.isEmpty,!email.isEmpty, !password.isEmpty else {
                showAlert(title: "missing required fields", message: "email and password required", actionTitle: "try again")
                 return
         }
         switch accountState {
         case .newAccount:
-            usersession.createNewAccount(email: email, password: password)
+            usersession.createNewAccount(name: name, email: email, password: password)
        case .existingAccount:
             usersession.signInExistingUser(email: email, password: password)
         }

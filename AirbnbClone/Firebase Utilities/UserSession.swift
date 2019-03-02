@@ -31,16 +31,12 @@ final class UserSession {
   
   // creates an authenticated user
   // on completion of creating authenticated user add the user to the firestore database
-  public func createNewAccount(email: String, password: String) {
+    public func createNewAccount(name: String, email: String, password: String) {
     Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
       if let error = error {
         self.userSessionAccountDelegate?.didRecieveErrorCreatingAccount(self, error: error)
       } else if let authDataResult = authDataResult {
         self.userSessionAccountDelegate?.didCreateAccount(self, user: authDataResult.user)
-        guard let username = authDataResult.user.email?.components(separatedBy: "@").first else {
-          print("no email entered")
-          return
-        }
         // add user to database
         // use the user.uid as the document id for ease of use when updating / querying current user
         DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey)
@@ -49,7 +45,7 @@ final class UserSession {
                     "email"       : authDataResult.user.email ?? "",
                     "displayName" : authDataResult.user.displayName ?? "",
                     "imageURL"    : authDataResult.user.photoURL ?? "",
-                    "username"    : username
+                    "username"    : name
             ], completion: { (error) in
               if let error = error {
                 print("error adding authenticated user to the database: \(error)")

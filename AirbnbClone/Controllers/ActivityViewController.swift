@@ -9,7 +9,9 @@
 import UIKit
 
 class ActivityViewController: UIViewController {
+    @IBOutlet weak var activityView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    activityView.layer.cornerRadius = 10
     }
 }

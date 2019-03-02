@@ -493,8 +493,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YXR-tQ-qgk">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YXR-tQ-qgk">
                                 <rect key="frame" x="115" y="447.5" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperPressed:" destination="gsp-Si-5la" eventType="valueChanged" id="skg-qG-oZB"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a45-KE-rBI">
                                 <rect key="frame" x="272" y="447.5" width="11" height="21"/>
@@ -518,7 +521,6 @@
                                 <state key="normal" title="Location"/>
                                 <connections>
                                     <action selector="LocationPressed:" destination="gsp-Si-5la" eventType="touchUpInside" id="eag-76-Q4i"/>
-                                    <segue destination="RWw-OI-b5L" kind="show" id="h7s-iw-9YQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTe-NW-M2o">
@@ -590,7 +592,7 @@
         <!--Location View Controller-->
         <scene sceneID="XuJ-Iu-erV">
             <objects>
-                <viewController id="RWw-OI-b5L" customClass="LocationViewController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationMapVC" id="RWw-OI-b5L" customClass="LocationViewController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rzL-AR-vZh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -632,6 +634,11 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -676,6 +683,7 @@
                         <viewLayoutGuide key="safeArea" id="HTe-c1-AU4"/>
                     </view>
                     <connections>
+                        <outlet property="button" destination="zbo-AF-xZB" id="Xm3-af-SAv"/>
                         <outlet property="descriptionInfo" destination="ubQ-RD-l5n" id="Sdf-O5-zVP"/>
                     </connections>
                 </viewController>
@@ -711,7 +719,7 @@
                                 <rect key="frame" x="94" y="252.5" width="187.5" height="182"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="z4k-yp-Avg">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="z4k-yp-Avg">
                                 <rect key="frame" x="94" y="252.5" width="187.5" height="182"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
@@ -729,6 +737,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6IX-cb-xJz"/>
                     </view>
+                    <connections>
+                        <outlet property="activityView" destination="iMt-Z5-YE1" id="Hba-7v-nmp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xe-fl-H6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
