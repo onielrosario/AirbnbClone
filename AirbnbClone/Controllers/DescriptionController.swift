@@ -41,10 +41,12 @@ extension DescriptionController: UITextViewDelegate {
         guard let text = textView.text  else {
             return
         }
+        textView.resignFirstResponder()
         delegate?.updateDescription(desctiption: text)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.becomeFirstResponder()
         textView.text = ""
     }
 }

@@ -11,7 +11,11 @@ import JTAppleCalendar
 
 
 class CalendarViewController: UIViewController {
-    @IBOutlet weak var calendarCollectionView: JTAppleCalendarView!
+    @IBOutlet weak var calendarCollectionView: JTAppleCalendarView! {
+        didSet {
+            self.calendarCollectionView.reloadData()
+        }
+    }
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     let formatter: DateFormatter = {
@@ -149,6 +153,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         handleCellTextColor(view: cell, cellState: cellState)
         if firstDate != nil {
             self.calendarCollectionView.selectDates(from: firstDate!, to: date, triggerSelectionDelegate: false, keepSelectionIfMultiSelectionAllowed: true)
+            calendarCollectionView.reloadData()
         } else {
             firstDate = date
         }

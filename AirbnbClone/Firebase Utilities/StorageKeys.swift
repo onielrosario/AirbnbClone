@@ -9,6 +9,7 @@
 import Foundation
 
 struct StorageKeys {
-  static let ImagesKey = "images"
-  // can also have more storage bucket keys here 
+    static let ImagesKey = "images"
+    static let postImageKey = "postImages"
+    // can also have more storage bucket keys here
 }

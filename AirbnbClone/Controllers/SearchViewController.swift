@@ -17,8 +17,11 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var priceRangeMinlabel: UILabel!
     @IBOutlet weak var rangeSlider: RangeSlider!
     @IBOutlet weak var priceRangeValueLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.isHidden = true
         searchBar.delegate = self
         mapView.delegate = self
         priceRangeValueLabel.text = "$20 - $1,000+"
@@ -49,6 +52,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        activityIndicator.isHidden = false
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text,
             !searchText.isEmpty else {
@@ -72,6 +76,7 @@ extension SearchViewController: UISearchBarDelegate {
                 self.searchBar.text = ""
             }
         }
+//        activityIndicator.isHidden = true
     }
 }
 
