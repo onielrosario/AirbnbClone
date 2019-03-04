@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 
+
 final class LocationService {
     
     static public func getCoordinate( addressString : String,
@@ -16,7 +17,8 @@ final class LocationService {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(addressString) { (placemarks, error) in
             if error == nil {
-                if let placemark = placemarks?[0] {
+                if let placemark = placemarks!.first {
+                  
                     let location = placemark.location!
                     completionHandler(location.coordinate, nil)
                     return

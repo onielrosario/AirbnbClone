@@ -12,16 +12,12 @@ protocol loginViewDelegate: AnyObject {
     func didSelectLoginButton(_ loginView: LoginView, accountState: AccountStatus)
 }
 
-
-
-
 class LoginView: UIView {
     var gradient: CAGradientLayer!
     var buttonGradient: CAGradientLayer!
     public weak var delegate: loginViewDelegate?
     private var tapGesture: UITapGestureRecognizer!
     private var accountLoginState = AccountStatus.newAccount
-    
     
     lazy var nameTextField: UITextField = {
         let tf = UITextField()
@@ -80,8 +76,6 @@ class LoginView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
-        
-        
     }
     
     
@@ -100,11 +94,6 @@ class LoginView: UIView {
     @objc private func buttonPressed() {
         delegate?.didSelectLoginButton(self, accountState: accountLoginState)
     }
-    
-    
-    
-    
-    
     @objc private func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         accountLoginState = accountLoginState == .newAccount ? .existingAccount : .newAccount
         switch accountLoginState {
@@ -117,10 +106,7 @@ class LoginView: UIView {
             loginButton.setTitle("Login", for: .normal)
             loginLabel.text = "New user? Create an account"
         }
-        
-        
     }
-    
     private func setupLabel() {
         addSubview(loginLabel)
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -128,11 +114,6 @@ class LoginView: UIView {
         loginLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10).isActive = true
         loginLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
-    
-    
-    
-    
-    
     private func setupTextfieldConstrains() {
         if self.accountLoginState == .newAccount {
             addSubview(nameTextField)

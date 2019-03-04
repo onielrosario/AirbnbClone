@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SwiftRangeSlider
+import FirebaseFirestore
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
@@ -18,6 +19,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var rangeSlider: RangeSlider!
     @IBOutlet weak var priceRangeValueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var listener: ListenerRegistration!
     private var places = [UserCollection]() {
         didSet {
             DispatchQueue.main.async {
@@ -35,6 +37,24 @@ class SearchViewController: UIViewController {
         priceRangeValueLabel.text = "$20 - $1,000+"
         self.locationNameLabel.text = "Search for location"
         setSearchBarColor()
+        getPosts()
+    }
+    
+    private func getPosts() {
+        places.removeAll()
+        listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.DocumentsCollectionKey).addSnapshotListener(includeMetadataChanges: true) { (snapShot, error) in
+            if let error = error {
+                self.showAlert(title: "network error", message: error.localizedDescription, actionTitle: "OK")
+            } else if let snapshot = snapShot {
+                var places = [UserCollection]()
+                for document in snapshot.documents {
+                    let allPlaces = UserCollection(dict: document.data())
+                    places.append(allPlaces)
+                }
+            print("\(places.count)")
+                self.places = places
+            }
+        }
     }
     
     
@@ -70,17 +90,19 @@ extension SearchViewController: UISearchBarDelegate {
             if let error = error {
                 print(error)
             } else if let placeMark = placeMark {
-                let placeMark = placeMark.first
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = (placeMark?.location?.coordinate)!
-                let span = MKCoordinateSpan(latitudeDelta: 0.075, longitudeDelta: 0.075)
-                let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
-                self.mapView.setRegion(region, animated: true)
-                annotation.title = searchText
-                self.mapView.addAnnotation(annotation)
-                self.mapView.selectAnnotation(annotation, animated: true)
-                self.locationNameLabel.text = searchText
-                self.searchBar.text = ""
+                for place in self.places {
+                    let placeMark = placeMark.first
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = CLLocationCoordinate2D(latitude: place.lat, longitude: place.long)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.075, longitudeDelta: 0.075)
+                    let region = MKCoordinateRegion(center: (placeMark?.location?.coordinate)!, span: span)
+                    self.mapView.setRegion(region, animated: true)
+                    annotation.title = place.title
+                    self.mapView.addAnnotation(annotation)
+                    self.mapView.selectAnnotation(annotation, animated: true)
+                    self.locationNameLabel.text = searchText
+                    self.searchBar.text = ""
+                }
             }
         }
     }
@@ -88,10 +110,17 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        annotationView.pinTintColor = UIColor.init(r: 241, g: 159, b: 132)
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        //annotationView.pinTintColor = UIColor.init(r: 241, g: 159, b: 132)
+        annotationView.markerTintColor = UIColor.init(r: 241, g: 159, b: 132)
         return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        //display a detail view
+        print("annotation selected")
+    }
+    
 }
 
 

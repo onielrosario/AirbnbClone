@@ -50,8 +50,8 @@ extension LocationResultsViewController: UITableViewDataSource {
 extension LocationResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let suggestion = completions[indexPath.row]
-        let address = suggestion.subtitle.isEmpty ? suggestion.title : suggestion.subtitle
-        LocationService.getCoordinate(addressString: address) { (coordinate, error) in
+        let addressString = (suggestion.title + " " + suggestion.subtitle).trimmingCharacters(in: .whitespacesAndNewlines) //suggestion.title.isEmpty ? suggestion.title : suggestion.subtitle
+        LocationService.getCoordinate(addressString: addressString) { (coordinate, error) in
             if let error = error {
                 print("error in coordinate:n \(error)")
             } else  {
