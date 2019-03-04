@@ -403,9 +403,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQe-Ph-F4E" customClass="CircularButton" customModule="AirbnbClone" customModuleProvider="target">
-                                                    <rect key="frame" x="112.5" y="21" width="150" height="200"/>
+                                                    <rect key="frame" x="87.5" y="21" width="200" height="200"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="6py-kA-Pdm"/>
+                                                        <constraint firstAttribute="width" constant="200" id="6py-kA-Pdm"/>
                                                         <constraint firstAttribute="height" constant="200" id="mJ6-As-6wE"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="soloProjectImagePH"/>
@@ -478,7 +478,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="nQM-wp-1sk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="nQM-wp-1sk">
                                 <rect key="frame" x="0.0" y="39.5" width="375" height="333.5"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="suz-Y0-eJS">

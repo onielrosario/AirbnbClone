@@ -65,7 +65,7 @@ final class DatabaseManager {
                                                                                             "startDate" : collectionInfo.startDate,
                                                                                             "endDate" : collectionInfo.endDate,
                                                                                             "userID" : collectionInfo.userID,
-                                                                                            "documentID" : collectionInfo.documentID
+                                                                                            "postImage" : collectionInfo.postImage
             
             ], completion: { (error) in
                 if let error = error {

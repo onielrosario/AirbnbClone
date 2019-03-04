@@ -10,12 +10,19 @@ import UIKit
 import JTAppleCalendar
 
 
+protocol CalendarDateSelectedDelegate: AnyObject {
+    func didSelectDates(startDate: String, endDate: String)
+}
+
+
+
 class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: JTAppleCalendarView! {
         didSet {
             self.calendarCollectionView.reloadData()
         }
     }
+    weak var delegate: CalendarDateSelectedDelegate?
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     let formatter: DateFormatter = {
@@ -102,7 +109,7 @@ class CalendarViewController: UIViewController {
     
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-        print("done button pressed")
+       navigationController?.popViewController(animated: true)
     }
     
     
@@ -148,12 +155,17 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-//       guard let customcell = cell as? CalendarCell else { return }
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
         if firstDate != nil {
             self.calendarCollectionView.selectDates(from: firstDate!, to: date, triggerSelectionDelegate: false, keepSelectionIfMultiSelectionAllowed: true)
             calendarCollectionView.reloadData()
+            formatter.dateFormat = "MMM dd"
+            let formatedFirstDate = formatter.string(from: firstDate!)
+            let formatedSecondDate = formatter.string(from: date)
+            showAlert(title: "Dates selected", message: "from \(formatedFirstDate) to \(formatedSecondDate)", style: .alert) { (alert) in
+              self.delegate?.didSelectDates(startDate: formatedFirstDate, endDate: formatedSecondDate)
+            }
         } else {
             firstDate = date
         }

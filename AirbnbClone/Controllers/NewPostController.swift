@@ -21,16 +21,22 @@ class NewPostController: UIViewController {
     private var tap: UITapGestureRecognizer!
     @IBOutlet weak var datesButton: UIButton!
     private var storagemanager: StorageManager!
+    private var usersession: UserSession!
     private lazy var imagePickerController: UIImagePickerController = {
         let ip = UIImagePickerController()
         ip.allowsEditing = true
         ip.delegate = self
         return ip
     }()
+    private var numberOfRooms = 0
     private var descriptionString = ""
     private var address = ""
     private var lat: Double!
     private var Long: Double!
+    private var startDate = ""
+    private var endDate = ""
+    private var newPostTitle = ""
+    private var price: Double!
     private var locationController: LocationViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let locationMainController = storyboard.instantiateViewController(withIdentifier: "LocationMapVC") as! LocationViewController
@@ -39,23 +45,20 @@ class NewPostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         storagemanager = (UIApplication.shared.delegate as! AppDelegate).storageManager
-        navigationItem.backBarButtonItem?.tintColor = UIColor.init(r: 241, g: 159, b: 132)
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         setupFields()
-      locationController.delegate = self
-    updatePostImage()
-
+        locationController.delegate = self
+        updatePostImage()
     }
     
     private func updatePostImage() {
         postImage.isUserInteractionEnabled = true
         tap = UITapGestureRecognizer(target: self, action: #selector(photoPressed))
-    tap.numberOfTapsRequired = 1
-    tap.numberOfTouchesRequired = 1
-    postImage.addGestureRecognizer(tap)
-    
-        
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        postImage.addGestureRecognizer(tap)
     }
-
+    
     @objc private func photoPressed() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
@@ -84,13 +87,16 @@ class NewPostController: UIViewController {
     }
     
     @IBAction func stepperPressed(_ sender: UIStepper) {
+        numberOfRooms = Int(sender.value)
         roomsLabel.text = "Rooms: \(Int(sender.value))"
+        
     }
     
     @IBAction func availability(_ sender: UIButton) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-     let calendar = storyboard.instantiateViewController(withIdentifier: "calendarVC") as! CalendarViewController
+        let calendar = storyboard.instantiateViewController(withIdentifier: "calendarVC") as! CalendarViewController
         navigationController?.pushViewController(calendar, animated: true)
+        calendar.delegate = self
     }
     
     
@@ -104,12 +110,30 @@ class NewPostController: UIViewController {
     }
     
     @IBAction func LocationPressed(_ sender: UIButton) {
-    navigationController?.pushViewController(locationController, animated: true)
+        navigationController?.pushViewController(locationController, animated: true)
         locationController.delegate = self
     }
     
     
     @IBAction func donePressed(_ sender: UIButton) {
+        guard let user = usersession.getCurrentUser() else {
+            return
+        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let activity = storyboard.instantiateViewController(withIdentifier: "ActivityVC") as! ActivityViewController
+        guard let imageData = postImage.image?.jpegData(compressionQuality: 1.0) else  { return }
+        activity.modalPresentationStyle = .overCurrentContext
+        present(activity, animated: true, completion: nil)
+        storagemanager.uploadNewPostImage(withData: imageData) { (url, error) in
+            if let error = error {
+                print(error)
+            } else if let url = url {
+                let newPostCollection = UserCollection.init(title: self.newPostTitle, rooms: self.numberOfRooms, price: self.price, address: self.address, lat: self.lat, long: self.Long, description: self.descriptionString, startDate: self.startDate, endDate: self.endDate, userID: user.uid, postImage: url.absoluteString)
+                DatabaseManager.addUserPostToDatabase(collectionInfo: newPostCollection)
+                activity.dismiss(animated: true, completion: nil)
+                self.showAlert(title: "Success", message: "new post uploaded", actionTitle: "OK")
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
 }
@@ -119,6 +143,13 @@ extension NewPostController: UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
+       guard let title = postTitle.text,
+        let price = PriceTF.text, !title.isEmpty, !price.isEmpty else {
+          showAlert(title: nil, message: "post form must be filled out.", actionTitle: "try again")
+            return
+        }
+        self.newPostTitle = title
+        self.price = Double(price)
         textField.resignFirstResponder()
     }
 }
@@ -147,16 +178,19 @@ extension NewPostController: UIImagePickerControllerDelegate, UINavigationContro
         let activity = storyboard.instantiateViewController(withIdentifier: "ActivityVC") as! ActivityViewController
         postImage.image = originalPhoto
         activity.dismiss(animated: true, completion: nil)
-        guard let imageData = originalPhoto.jpegData(compressionQuality: 1.0) else {
-            print("failed to create image data")
-            
-            return
-        }
-
         dismiss(animated: true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
     }
+}
+
+extension NewPostController: CalendarDateSelectedDelegate {
+    func didSelectDates(startDate: String, endDate: String) {
+        self.startDate = startDate
+        self.endDate = endDate
+    }
+    
+    
 }
