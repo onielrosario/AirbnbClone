@@ -23,7 +23,7 @@ class ProfileTableViewCell: UITableViewCell {
         profilePicture.layer.cornerRadius = profilePicture.bounds.width / 2
         profilePicture.clipsToBounds = true
     }
-
+    
     @IBAction func ProfileButtonPressed(_ sender: UIButton) {
         delegate?.sender()
     }

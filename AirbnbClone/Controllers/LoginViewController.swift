@@ -17,7 +17,7 @@ enum AccountStatus {
 
 class LoginViewController: UIViewController {
     private var usersession: UserSession!
-let loginView = LoginView()
+    let loginView = LoginView()
     private var tapGesture: UITapGestureRecognizer!
     private var accountLoginState = AccountStatus.newAccount
     override func viewDidLoad() {
@@ -35,8 +35,8 @@ let loginView = LoginView()
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let name = loginView.nameTextField.text,
-        let email = loginView.emailTextField.text,
-        let password = loginView.passwordTextField.text,
+            let email = loginView.emailTextField.text,
+            let password = loginView.passwordTextField.text,
             !name.isEmpty, !email.isEmpty, !password.isEmpty else {
                 return false
         }
@@ -44,7 +44,7 @@ extension LoginViewController: UITextFieldDelegate {
         case .newAccount:
             usersession.createNewAccount(name: name, email: email, password: password)
         case .existingAccount:
-           usersession.signInExistingUser(email: email, password: password)
+            usersession.signInExistingUser(email: email, password: password)
         }
         return true 
     }
@@ -53,16 +53,16 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: loginViewDelegate {
     func didSelectLoginButton(_ loginView: LoginView, accountState: AccountStatus) {
         guard let email = loginView.emailTextField.text,
-        let password = loginView.passwordTextField.text,
+            let password = loginView.passwordTextField.text,
             let name = loginView.nameTextField.text,
             !name.isEmpty,!email.isEmpty, !password.isEmpty else {
-               showAlert(title: "missing required fields", message: "email and password required", actionTitle: "try again")
+                showAlert(title: "missing required fields", message: "email and password required", actionTitle: "try again")
                 return
         }
         switch accountState {
         case .newAccount:
             usersession.createNewAccount(name: name, email: email, password: password)
-       case .existingAccount:
+        case .existingAccount:
             usersession.signInExistingUser(email: email, password: password)
         }
     }
@@ -71,12 +71,12 @@ extension LoginViewController: loginViewDelegate {
 extension LoginViewController: UserSessionAccountCreationDelegate {
     func didCreateAccount(_ userSession: UserSession, user: User) {
         showAlert(title: "Account Created", message: "account created using: \(user.email ?? "no email entered")", style: .alert) { (alert) in
-          self.presentMainTabController()
+            self.presentMainTabController()
         }
     }
     
     func didRecieveErrorCreatingAccount(_ userSession: UserSession, error: Error) {
-    showAlert(title: "Account creation error", message: error.localizedDescription, actionTitle: "try again")
+        showAlert(title: "Account creation error", message: error.localizedDescription, actionTitle: "try again")
     }
     
     private func presentMainTabController() {

@@ -26,7 +26,7 @@ class LocationResultsViewController: UIViewController {
     weak var updateDelegate: UpdateAddressPostControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-tableView.dataSource = self
+        tableView.dataSource = self
         tableView.delegate = self
         searchCompleter.delegate = self
     }

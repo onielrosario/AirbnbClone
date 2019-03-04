@@ -71,7 +71,7 @@ class CalendarViewController: UIViewController {
     
     func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
         guard let customCell = view as? CalendarCell else { return }
-         let todaysDate = Date()
+        let todaysDate = Date()
         if cellState.isSelected {
             customCell.dateLabel.textColor = .white
         } else {
@@ -93,7 +93,7 @@ class CalendarViewController: UIViewController {
             customCell.currentDay.isHidden = true
         }
         
-   formatter.dateFormat = "d"
+        formatter.dateFormat = "d"
         let todaysDay = formatter.string(from: todaysDate)
         if let myDate = customCell.dateLabel.text {
             guard let myDateNumber = Int(myDate) else { return }
@@ -109,7 +109,7 @@ class CalendarViewController: UIViewController {
     
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-       navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -164,7 +164,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
             let formatedFirstDate = formatter.string(from: firstDate!)
             let formatedSecondDate = formatter.string(from: date)
             showAlert(title: "Dates selected", message: "from \(formatedFirstDate) to \(formatedSecondDate)", style: .alert) { (alert) in
-              self.delegate?.didSelectDates(startDate: formatedFirstDate, endDate: formatedSecondDate)
+                self.delegate?.didSelectDates(startDate: formatedFirstDate, endDate: formatedSecondDate)
             }
         } else {
             firstDate = date

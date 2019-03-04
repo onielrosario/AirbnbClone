@@ -143,10 +143,10 @@ extension NewPostController: UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-       guard let title = postTitle.text,
-        let price = PriceTF.text, !title.isEmpty, !price.isEmpty else {
-          showAlert(title: nil, message: "post form must be filled out.", actionTitle: "try again")
-            return
+        guard let title = postTitle.text,
+            let price = PriceTF.text, !title.isEmpty, !price.isEmpty else {
+                showAlert(title: nil, message: "post form must be filled out.", actionTitle: "try again")
+                return
         }
         self.newPostTitle = title
         self.price = Double(price)

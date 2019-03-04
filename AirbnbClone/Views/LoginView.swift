@@ -57,7 +57,7 @@ class LoginView: UIView {
     
     lazy var loginButton: UIButton = {
         let button = UIButton()
-         button.backgroundColor = .blue
+        button.backgroundColor = .blue
         button.layer.cornerRadius = 20
         button.setTitle("Create", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -65,7 +65,7 @@ class LoginView: UIView {
     }()
     
     lazy var loginLabel: UILabel = {
-    var label = UILabel()
+        var label = UILabel()
         label.text = "Login using your acccount"
         label.textAlignment = .center
         return label
@@ -78,9 +78,9 @@ class LoginView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
         commonInit()
-
+        
         
     }
     
@@ -109,7 +109,7 @@ class LoginView: UIView {
         accountLoginState = accountLoginState == .newAccount ? .existingAccount : .newAccount
         switch accountLoginState {
         case .newAccount:
-           loginButton.setTitle("Create", for: .normal)
+            loginButton.setTitle("Create", for: .normal)
             loginLabel.text = "Login using your acccount"
             nameTextField.isHidden = false
         case .existingAccount:
@@ -135,44 +135,44 @@ class LoginView: UIView {
     
     private func setupTextfieldConstrains() {
         if self.accountLoginState == .newAccount {
-             addSubview(nameTextField)
-             addSubview(emailTextField)
-              addSubview(passwordTextField)
+            addSubview(nameTextField)
+            addSubview(emailTextField)
+            addSubview(passwordTextField)
             //name
             nameTextField.translatesAutoresizingMaskIntoConstraints = false
             nameTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             nameTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100).isActive = true
             nameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
             nameTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-                //email
-                emailTextField.translatesAutoresizingMaskIntoConstraints = false
-                emailTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-                emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20).isActive = true
-                emailTextField.widthAnchor.constraint(equalTo: nameTextField.widthAnchor).isActive = true
-                emailTextField.heightAnchor.constraint(equalTo: nameTextField.heightAnchor).isActive = true
-                //password
-                passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-                passwordTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-                passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
-                passwordTextField.widthAnchor.constraint(equalTo: emailTextField.widthAnchor).isActive = true
-                passwordTextField.heightAnchor.constraint(equalTo: nameTextField.heightAnchor).isActive = true
+            //email
+            emailTextField.translatesAutoresizingMaskIntoConstraints = false
+            emailTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20).isActive = true
+            emailTextField.widthAnchor.constraint(equalTo: nameTextField.widthAnchor).isActive = true
+            emailTextField.heightAnchor.constraint(equalTo: nameTextField.heightAnchor).isActive = true
+            //password
+            passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+            passwordTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
+            passwordTextField.widthAnchor.constraint(equalTo: emailTextField.widthAnchor).isActive = true
+            passwordTextField.heightAnchor.constraint(equalTo: nameTextField.heightAnchor).isActive = true
         } else {
             addSubview(emailTextField)
-              addSubview(passwordTextField)
-                emailTextField.translatesAutoresizingMaskIntoConstraints = false
-                emailTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-                emailTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100).isActive = true
-                emailTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-                emailTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-                passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-                passwordTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-                passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
-                passwordTextField.widthAnchor.constraint(equalTo: emailTextField.widthAnchor).isActive = true
-                passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
+            addSubview(passwordTextField)
+            emailTextField.translatesAutoresizingMaskIntoConstraints = false
+            emailTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            emailTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100).isActive = true
+            emailTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
+            emailTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+            passwordTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
+            passwordTextField.widthAnchor.constraint(equalTo: emailTextField.widthAnchor).isActive = true
+            passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
         }
     }
     
-
+    
     private func setupLoginViewBackground()  {
         gradient = CAGradientLayer()
         gradient.frame = self.bounds

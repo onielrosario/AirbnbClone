@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
     private func setupUI() {
         navigationController?.navigationBar.backgroundColor = UIColor.init(r: 241, g: 159, b: 132)
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

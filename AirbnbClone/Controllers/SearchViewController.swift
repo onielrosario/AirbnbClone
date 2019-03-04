@@ -45,12 +45,12 @@ class SearchViewController: UIViewController {
     }
     
     private func setSearchBarColor() {
-      searchBar.setImage(UIImage(named: "search"), for: .search, state: .normal)
+        searchBar.setImage(UIImage(named: "search"), for: .search, state: .normal)
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
-
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -63,7 +63,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text,
             !searchText.isEmpty else {
-             showAlert(title: "missing fields", message: "name of place or location requited", actionTitle: "OK")
+                showAlert(title: "missing fields", message: "name of place or location requited", actionTitle: "OK")
                 return }
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(searchText) { (placeMark, error) in

@@ -84,7 +84,7 @@ final class StorageManager {
                     print("download error: \(error)")
                     completionHandler(nil, error)
                 } else if let url = url {
-            completionHandler(url, nil)
+                    completionHandler(url, nil)
                 }
             })
         }
