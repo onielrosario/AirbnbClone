@@ -121,20 +121,37 @@ class NewPostController: UIViewController {
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let activity = storyboard.instantiateViewController(withIdentifier: "ActivityVC") as! ActivityViewController
-        guard let imageData = postImage.image?.jpegData(compressionQuality: 1.0) else  { return }
+        guard let imageData = postImage.image?.jpegData(compressionQuality: 1.0) else  {
+            showAlert(title: "No Image", message: "add a Listing image.", actionTitle: "OK")
+            return
+        }
         activity.modalPresentationStyle = .overCurrentContext
         present(activity, animated: true, completion: nil)
         storagemanager.uploadNewPostImage(withData: imageData) { (url, error) in
             if let error = error {
                 print(error)
             } else if let url = url {
+                guard !self.newPostTitle.isEmpty, !self.address.isEmpty else {
+                    self.showAlert(title: "", message: "all textfields must be filled", actionTitle: "ok")
+                    return
+                }
+                guard !self.startDate.isEmpty, !self.endDate.isEmpty else {
+                    self.showAlert(title: "", message: "Must add a valid Date", actionTitle: "OK")
+                    return
+                }
+                guard !self.descriptionString.isEmpty else {
+                    self.showAlert(title: "", message: "Add description to post.", actionTitle: "OK")
+                    return
+                }
+                
                 let newPostCollection = UserCollection.init(title: self.newPostTitle, rooms: self.numberOfRooms, price: self.price, address: self.address, lat: self.lat, long: self.Long, description: self.descriptionString, startDate: self.startDate, endDate: self.endDate, userID: user.uid, postImage: url.absoluteString)
                 DatabaseManager.addUserPostToDatabase(collectionInfo: newPostCollection)
                 activity.dismiss(animated: true, completion: nil)
                 self.showAlert(title: "Success", message: "new post uploaded", actionTitle: "OK")
+                self.navigationController?.popViewController(animated: true)
             }
         }
-        navigationController?.popViewController(animated: true)
+        
     }
 }
 
@@ -144,8 +161,7 @@ extension NewPostController: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let title = postTitle.text,
-            let price = PriceTF.text, !title.isEmpty, !price.isEmpty else {
-                showAlert(title: nil, message: "post form must be filled out.", actionTitle: "try again")
+            let price = PriceTF.text else {
                 return
         }
         self.newPostTitle = title

@@ -54,15 +54,21 @@ extension LoginViewController: loginViewDelegate {
     func didSelectLoginButton(_ loginView: LoginView, accountState: AccountStatus) {
         guard let email = loginView.emailTextField.text,
             let password = loginView.passwordTextField.text,
-            let name = loginView.nameTextField.text,
-            !name.isEmpty,!email.isEmpty, !password.isEmpty else {
-                showAlert(title: "missing required fields", message: "email and password required", actionTitle: "try again")
+            let name = loginView.nameTextField.text else {
                 return
         }
         switch accountState {
         case .newAccount:
+            guard !email.isEmpty, !password.isEmpty, !name.isEmpty else {
+               showAlert(title: "missing required fields", message: "name, email, & password required", actionTitle: "try again")
+                return
+            }
             usersession.createNewAccount(name: name, email: email, password: password)
         case .existingAccount:
+            guard !email.isEmpty, !password.isEmpty else {
+                showAlert(title: "missing required fields", message: "email and password required", actionTitle: "Try again")
+                return
+            }
             usersession.signInExistingUser(email: email, password: password)
         }
     }
