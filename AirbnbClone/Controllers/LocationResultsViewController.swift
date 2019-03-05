@@ -54,7 +54,7 @@ extension LocationResultsViewController: UITableViewDelegate {
         LocationService.getCoordinate(addressString: addressString) { (coordinate, error) in
             if let error = error {
                 print("error in coordinate:n \(error)")
-            } else  {
+            } else {
                 self.updateDelegate?.UpdatePostAdress(addressTittle: suggestion.title, addressSubtittle: suggestion.subtitle)
                 self.delegate?.didSelectCoordinate(self, coordinate: coordinate)
             }

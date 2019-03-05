@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 
 class NewPostController: UIViewController {
-    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var postImage: UIImageView?
     @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var postStepper: UIStepper!
     @IBOutlet weak var roomsLabel: UILabel!
@@ -52,11 +52,11 @@ class NewPostController: UIViewController {
     }
     
     private func updatePostImage() {
-        postImage.isUserInteractionEnabled = true
+        postImage!.isUserInteractionEnabled = true
         tap = UITapGestureRecognizer(target: self, action: #selector(photoPressed))
         tap.numberOfTapsRequired = 1
         tap.numberOfTouchesRequired = 1
-        postImage.addGestureRecognizer(tap)
+        postImage!.addGestureRecognizer(tap)
     }
     
     @objc private func photoPressed() {
@@ -121,7 +121,7 @@ class NewPostController: UIViewController {
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let activity = storyboard.instantiateViewController(withIdentifier: "ActivityVC") as! ActivityViewController
-        guard let imageData = postImage.image?.jpegData(compressionQuality: 1.0) else  {
+        guard let imageData = postImage!.image?.jpegData(compressionQuality: 1.0) else  {
             showAlert(title: "No Image", message: "add a Listing image.", actionTitle: "OK")
             return
         }
@@ -132,14 +132,17 @@ class NewPostController: UIViewController {
                 print(error)
             } else if let url = url {
                 guard !self.newPostTitle.isEmpty, !self.address.isEmpty else {
+                    activity.dismiss(animated: true, completion: nil)
                     self.showAlert(title: "", message: "all textfields must be filled", actionTitle: "ok")
                     return
                 }
                 guard !self.startDate.isEmpty, !self.endDate.isEmpty else {
+                     activity.dismiss(animated: true, completion: nil)
                     self.showAlert(title: "", message: "Must add a valid Date", actionTitle: "OK")
                     return
                 }
                 guard !self.descriptionString.isEmpty else {
+                     activity.dismiss(animated: true, completion: nil)
                     self.showAlert(title: "", message: "Add description to post.", actionTitle: "OK")
                     return
                 }
@@ -147,11 +150,10 @@ class NewPostController: UIViewController {
                 let newPostCollection = UserCollection.init(title: self.newPostTitle, rooms: self.numberOfRooms, price: self.price, address: self.address, lat: self.lat, long: self.Long, description: self.descriptionString, startDate: self.startDate, endDate: self.endDate, userID: user.uid, postImage: url.absoluteString)
                 DatabaseManager.addUserPostToDatabase(collectionInfo: newPostCollection)
                 activity.dismiss(animated: true, completion: nil)
-                self.showAlert(title: "Success", message: "new post uploaded", actionTitle: "OK")
                 self.navigationController?.popViewController(animated: true)
+               self.showAlert(title: "success", message: "new post added", actionTitle: "OK")
             }
         }
-        
     }
 }
 
@@ -192,7 +194,7 @@ extension NewPostController: UIImagePickerControllerDelegate, UINavigationContro
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let activity = storyboard.instantiateViewController(withIdentifier: "ActivityVC") as! ActivityViewController
-        postImage.image = originalPhoto
+        postImage!.image = originalPhoto
         activity.dismiss(animated: true, completion: nil)
         dismiss(animated: true)
     }

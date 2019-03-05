@@ -19,6 +19,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var rangeSlider: RangeSlider!
     @IBOutlet weak var priceRangeValueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var pointAnnotation: CustomPointAnnotation!
+    var pinAnnotationView: MKPinAnnotationView!
     private var listener: ListenerRegistration!
     private var places = [UserCollection]() {
         didSet {
@@ -99,7 +101,6 @@ extension SearchViewController: UISearchBarDelegate {
                     self.mapView.setRegion(region, animated: true)
                     annotation.title = place.title
                     self.mapView.addAnnotation(annotation)
-                    self.mapView.selectAnnotation(annotation, animated: true)
                     self.locationNameLabel.text = searchText
                     self.searchBar.text = ""
                 }
@@ -111,15 +112,30 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        //annotationView.pinTintColor = UIColor.init(r: 241, g: 159, b: 132)
         annotationView.markerTintColor = UIColor.init(r: 241, g: 159, b: 132)
+        annotationView.glyphImage =  UIImage(named: "houseIcon")
         return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        //display a detail view
-        print("annotation selected")
+       let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailVC") as! DetailController
+        guard let annotation = view.annotation else {
+            return
+        }
+        let index = places.index { $0.coordinate.latitude == annotation.coordinate.latitude && $0.coordinate.longitude == $0.coordinate.longitude
+        }
+        if let placeindex = index {
+            let listingInfo = places[placeindex]
+            detailVC.listingInfo = listingInfo
+            navigationController?.modalPresentationStyle = .popover
+            navigationController?.modalTransitionStyle = .flipHorizontal
+           navigationController?.pushViewController(detailVC, animated: true)
+        }
+     mapView.deselectAnnotation(annotation, animated: true)
     }
+    
+    
     
 }
 
