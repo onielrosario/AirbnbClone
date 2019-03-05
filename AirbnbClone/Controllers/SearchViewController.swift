@@ -63,7 +63,16 @@ class SearchViewController: UIViewController {
     @IBAction func rangeSliderChanged(_ sender: RangeSlider) {
         let maxValue = Int(sender.upperValue)
         let minValue = Int(sender.lowerValue)
-        self.priceRangeValueLabel.text = "$\(minValue) - $\(maxValue)"
+        listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.DocumentsCollectionKey)
+            .whereField("price", isLessThan: sender.upperValue)
+            .addSnapshotListener(includeMetadataChanges: true, listener: { (snapshot, error) in
+                if let error = error {
+                    print(error)
+                } else if let snapshot = snapshot {
+                    print(snapshot.count)
+                }
+            })
+        
     }
     
     private func setSearchBarColor() {

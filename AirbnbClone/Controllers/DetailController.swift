@@ -36,7 +36,7 @@ class DetailController: UIViewController {
         descriptionLabel.text = """
         \(listingInfo.description)
         number of rooms: \(listingInfo.rooms)
-        price: $\(listingInfo.price).00
+        price: $\(Int(listingInfo.price)).00 per night!
         """
         davailableDatesLabel.text = "from: \(listingInfo.startDate) / to: \(listingInfo.endDate)"
           let coordinate = CLLocationCoordinate2D(latitude: listingInfo.lat, longitude: listingInfo.long)
