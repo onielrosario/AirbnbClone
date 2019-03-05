@@ -29,7 +29,7 @@ class DescriptionController: UIViewController {
         descriptionInfo.allowsEditingTextAttributes = true
         descriptionInfo.delegate = self
         tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        descriptionView.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
     }
     
     @objc private func tapped() {

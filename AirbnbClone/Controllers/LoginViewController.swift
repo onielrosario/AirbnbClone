@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
 }
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+          textField.resignFirstResponder()
         guard let name = loginView.nameTextField.text,
             let email = loginView.emailTextField.text,
             let password = loginView.passwordTextField.text,
