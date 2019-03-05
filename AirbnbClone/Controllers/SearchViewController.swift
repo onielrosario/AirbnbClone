@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var rangeSlider: RangeSlider!
     @IBOutlet weak var priceRangeValueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var pointAnnotation: CustomPointAnnotation!
+//    var pointAnnotation: CustomPointAnnotation!
     var pinAnnotationView: MKPinAnnotationView!
     private var listener: ListenerRegistration!
     private var places = [UserCollection]() {

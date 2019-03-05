@@ -162,13 +162,18 @@ extension NewPostController: UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
+         textField.resignFirstResponder()
         guard let title = postTitle.text,
             let price = PriceTF.text else {
                 return
         }
         self.newPostTitle = title
         self.price = Double(price)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
     }
 }
 

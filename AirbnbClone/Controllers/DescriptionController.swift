@@ -16,16 +16,24 @@ protocol DescriptionDelegate: AnyObject {
 
 
 class DescriptionController: UIViewController {
+    
+    @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var descriptionInfo: UITextView!
     @IBOutlet weak var button: UIButton!
     weak var delegate: DescriptionDelegate?
-    
+    @IBOutlet var tap: UITapGestureRecognizer!
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionInfo.layer.cornerRadius = 10
         button.layer.cornerRadius = 10
         descriptionInfo.allowsEditingTextAttributes = true
         descriptionInfo.delegate = self
+        tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        descriptionView.addGestureRecognizer(tap)
+    }
+    
+    @objc private func tapped() {
+      descriptionInfo.resignFirstResponder()
     }
     
     
@@ -49,4 +57,8 @@ extension DescriptionController: UITextViewDelegate {
         textView.becomeFirstResponder()
         textView.text = ""
     }
+    
+
+   
+    
 }

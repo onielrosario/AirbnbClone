@@ -44,13 +44,12 @@ class DetailController: UIViewController {
         let region = MKCoordinateRegion(center: coordinate, span: span)
         regionMapview.setRegion(region, animated: true)
         regionMapview.isScrollEnabled = false
-        
+        regionMapview.isZoomEnabled = false
     }
 
     
     
     @IBAction func bookButton(_ sender: UIButton) {
-        
         
     }
     
