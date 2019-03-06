@@ -22,6 +22,11 @@ class SearchViewController: UIViewController {
 //    var pointAnnotation: CustomPointAnnotation!
     var pinAnnotationView: MKPinAnnotationView!
     private var listener: ListenerRegistration!
+    private var annotations = [MKPointAnnotation]() {
+        didSet {
+            mapView.reloadInputViews()
+        }
+    }
     private var places = [UserCollection]() {
         didSet {
             DispatchQueue.main.async {
@@ -48,6 +53,7 @@ class SearchViewController: UIViewController {
             if let error = error {
                 self.showAlert(title: "network error", message: error.localizedDescription, actionTitle: "OK")
             } else if let snapshot = snapShot {
+               
                 var places = [UserCollection]()
                 for document in snapshot.documents {
                     let allPlaces = UserCollection(dict: document.data())
@@ -64,15 +70,29 @@ class SearchViewController: UIViewController {
         let maxValue = Int(sender.upperValue)
         let minValue = Int(sender.lowerValue)
         listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.DocumentsCollectionKey)
-            .whereField("price", isLessThan: sender.upperValue)
+            .whereField("price", isLessThan: sender.upperValue).whereField("price", isGreaterThan: sender.lowerValue)
             .addSnapshotListener(includeMetadataChanges: true, listener: { (snapshot, error) in
                 if let error = error {
                     print(error)
                 } else if let snapshot = snapshot {
                     print(snapshot.count)
+                   var changePlaces = [UserCollection]()
+                    for document in snapshot.documents {
+                        let searchedPlaces = UserCollection(dict: document.data())
+                        changePlaces.append(searchedPlaces)
+                        var annotations = [MKPointAnnotation]()
+                        let annotation = MKPointAnnotation.init()
+                        annotation.coordinate = searchedPlaces.coordinate
+                        annotations.append(annotation)
+                        DispatchQueue.main.async {
+                        self.annotations = annotations
+                         self.places = changePlaces
+                        self.mapView.reloadInputViews()
+                        }
+                    }
                 }
             })
-        
+        priceRangeValueLabel.text = "$\(minValue) - $\(maxValue)"
     }
     
     private func setSearchBarColor() {
@@ -109,6 +129,7 @@ extension SearchViewController: UISearchBarDelegate {
                     let region = MKCoordinateRegion(center: (placeMark?.location?.coordinate)!, span: span)
                     self.mapView.setRegion(region, animated: true)
                     annotation.title = place.title
+                    self.annotations.append(annotation)
                     self.mapView.addAnnotation(annotation)
                     self.locationNameLabel.text = searchText
                     self.searchBar.text = ""

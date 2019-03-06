@@ -13,6 +13,8 @@
 		0904E3CC2217768E00B4066E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0904E3CB2217768E00B4066E /* Assets.xcassets */; };
 		0904E3CF2217768E00B4066E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0904E3CD2217768E00B4066E /* LaunchScreen.storyboard */; };
 		0904E3D7221777DF00B4066E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0904E3D6221777DF00B4066E /* GoogleService-Info.plist */; };
+		09188E6322305EE300C93737 /* SavedCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09188E6222305EE300C93737 /* SavedCollectionTableViewCell.swift */; };
+		09188E65223061B200C93737 /* SavedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09188E64223061B200C93737 /* SavedCollectionViewCell.swift */; };
 		093277942218CA8600C95503 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277932218CA8600C95503 /* SavedViewController.swift */; };
 		093277962218CA9300C95503 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277952218CA9300C95503 /* ProfileViewController.swift */; };
 		093277992218CE1B00C95503 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093277982218CE1B00C95503 /* ActivityViewController.swift */; };
@@ -56,6 +58,8 @@
 		0904E3CE2217768E00B4066E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0904E3D02217768E00B4066E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0904E3D6221777DF00B4066E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		09188E6222305EE300C93737 /* SavedCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		09188E64223061B200C93737 /* SavedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCollectionViewCell.swift; sourceTree = "<group>"; };
 		093277932218CA8600C95503 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		093277952218CA9300C95503 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		093277982218CE1B00C95503 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 			children = (
 				09B073E52219DDFD002947C6 /* CalendarCell.swift */,
 				09EF30F5221CA26E00DF1222 /* ProfileTableViewCell.swift */,
+				09188E6222305EE300C93737 /* SavedCollectionTableViewCell.swift */,
+				09188E64223061B200C93737 /* SavedCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				0944D1822221FF0000C99455 /* MainTabController.swift in Sources */,
 				0904E3C72217768D00B4066E /* SearchViewController.swift in Sources */,
 				09EF30F6221CA26E00DF1222 /* ProfileTableViewCell.swift in Sources */,
+				09188E65223061B200C93737 /* SavedCollectionViewCell.swift in Sources */,
 				094ACE64222EE5E6008AF224 /* DetailController.swift in Sources */,
 				09A086E3222988B700CA50D3 /* UserCollection.swift in Sources */,
 				09A11ACE221A6B8200D1606B /* UIColor+Extension.swift in Sources */,
@@ -452,6 +459,7 @@
 				09B073E62219DDFD002947C6 /* CalendarCell.swift in Sources */,
 				0944D1802221F8FD00C99455 /* StorageKeys.swift in Sources */,
 				09E7A2F822288D6F0029FB60 /* LocationResultsViewController.swift in Sources */,
+				09188E6322305EE300C93737 /* SavedCollectionTableViewCell.swift in Sources */,
 				09E7A2FC2228914E0029FB60 /* LocationService.swift in Sources */,
 				095EAF5A222720B1008A3AB9 /* DescriptionController.swift in Sources */,
 				09EF3105221CBFD000DF1222 /* UserSession.swift in Sources */,
