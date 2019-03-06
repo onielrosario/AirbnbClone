@@ -19,12 +19,11 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var rangeSlider: RangeSlider!
     @IBOutlet weak var priceRangeValueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-//    var pointAnnotation: CustomPointAnnotation!
     var pinAnnotationView: MKPinAnnotationView!
     private var listener: ListenerRegistration!
     private var annotations = [MKPointAnnotation]() {
         didSet {
-            mapView.reloadInputViews()
+            self.mapView.reloadInputViews()
         }
     }
     private var places = [UserCollection]() {
@@ -34,6 +33,11 @@ class SearchViewController: UIViewController {
             }
         }
     }
+//    private var test = Double(){
+//        didSet{
+//                self.mapView.reloadInputViews()
+//        }
+//    }
     
     
     override func viewDidLoad() {
@@ -67,6 +71,8 @@ class SearchViewController: UIViewController {
     
     
     @IBAction func rangeSliderChanged(_ sender: RangeSlider) {
+        self.mapView.removeAnnotations(annotations)
+        annotations.removeAll()
         let maxValue = Int(sender.upperValue)
         let minValue = Int(sender.lowerValue)
         listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.DocumentsCollectionKey)
@@ -76,19 +82,13 @@ class SearchViewController: UIViewController {
                     print(error)
                 } else if let snapshot = snapshot {
                     print(snapshot.count)
-                   var changePlaces = [UserCollection]()
                     for document in snapshot.documents {
                         let searchedPlaces = UserCollection(dict: document.data())
-                        changePlaces.append(searchedPlaces)
-                        var annotations = [MKPointAnnotation]()
-                        let annotation = MKPointAnnotation.init()
-                        annotation.coordinate = searchedPlaces.coordinate
-                        annotations.append(annotation)
-                        DispatchQueue.main.async {
-                        self.annotations = annotations
-                         self.places = changePlaces
-                        self.mapView.reloadInputViews()
-                        }
+                    let annotation = MKPointAnnotation()
+                        annotation.coordinate = CLLocationCoordinate2D(latitude: searchedPlaces.lat, longitude: searchedPlaces.long)
+                        annotation.title = searchedPlaces.title
+                        self.annotations.append(annotation)
+                        self.mapView.addAnnotation(annotation)
                     }
                 }
             })
@@ -101,6 +101,7 @@ class SearchViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
     
 }
 

@@ -53,6 +53,10 @@ class DetailController: UIViewController {
         
     }
     
+    @IBAction func favortireButton(_ sender: UIButton) {
+    }
+    
+    
 
 }
 

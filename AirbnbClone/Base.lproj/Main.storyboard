@@ -717,6 +717,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asF-tS-ePy">
+                                                <rect key="frame" x="312" y="257" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="4aS-Pr-TDL"/>
+                                                    <constraint firstAttribute="height" constant="40" id="brI-q9-4jw"/>
+                                                </constraints>
+                                                <state key="normal" image="like"/>
+                                                <connections>
+                                                    <action selector="favortireButton:" destination="U5a-Q6-3f7" eventType="touchUpInside" id="Jqv-nt-z8w"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -741,12 +752,14 @@
                                             <constraint firstItem="wBq-LK-qED" firstAttribute="top" secondItem="ivw-mu-upn" secondAttribute="bottom" constant="10" id="e0u-u1-NFy"/>
                                             <constraint firstItem="ivw-mu-upn" firstAttribute="leading" secondItem="b1G-AO-1hI" secondAttribute="leading" constant="11" id="hag-DU-Ydm"/>
                                             <constraint firstItem="ivw-mu-upn" firstAttribute="top" secondItem="kFm-Dr-14J" secondAttribute="bottom" constant="5" id="hfu-Nj-egc"/>
+                                            <constraint firstItem="asF-tS-ePy" firstAttribute="top" secondItem="b1G-AO-1hI" secondAttribute="top" constant="257" id="kFZ-SO-wkh"/>
                                             <constraint firstItem="kFm-Dr-14J" firstAttribute="top" secondItem="btK-4o-SWe" secondAttribute="bottom" constant="8" id="mpn-Bq-2gg"/>
                                             <constraint firstItem="bXi-WI-qgT" firstAttribute="top" secondItem="UDi-CC-DDH" secondAttribute="bottom" constant="20" id="nBz-4M-kPX"/>
                                             <constraint firstItem="bXi-WI-qgT" firstAttribute="leading" secondItem="b1G-AO-1hI" secondAttribute="leading" constant="8" id="rHr-Ul-SlN"/>
                                             <constraint firstAttribute="trailing" secondItem="bXi-WI-qgT" secondAttribute="trailing" constant="8" id="wfP-3F-f7F"/>
                                             <constraint firstItem="UDi-CC-DDH" firstAttribute="top" secondItem="b1G-AO-1hI" secondAttribute="top" id="wxc-Wl-MEj"/>
                                             <constraint firstItem="btK-4o-SWe" firstAttribute="top" secondItem="bXi-WI-qgT" secondAttribute="bottom" constant="20" id="xuC-CB-g07"/>
+                                            <constraint firstAttribute="trailing" secondItem="asF-tS-ePy" secondAttribute="trailing" constant="23" id="yHY-5M-Sp7"/>
                                             <constraint firstAttribute="trailing" secondItem="wBq-LK-qED" secondAttribute="trailing" id="ypl-51-Yoo"/>
                                         </constraints>
                                     </view>
@@ -986,6 +999,9 @@
                         <viewLayoutGuide key="safeArea" id="1ti-j4-xlV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Saved" id="GqE-SQ-cE1"/>
+                    <connections>
+                        <outlet property="tableView" destination="RGC-bA-MO1" id="9pA-s3-duM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5q-pH-W1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1075,6 +1091,7 @@
     <resources>
         <image name="add" width="25" height="25"/>
         <image name="addfilled" width="25" height="25"/>
+        <image name="like" width="25" height="25"/>
         <image name="locationPlaceholder" width="420" height="420"/>
         <image name="map" width="25" height="25"/>
         <image name="mapfiled" width="25" height="25"/>
