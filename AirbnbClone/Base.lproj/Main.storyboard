@@ -898,7 +898,7 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NSy-mf-nt5">
                                                     <rect key="frame" x="15" y="11" width="345" height="256"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Lt-Jb-L3Y">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Lt-Jb-L3Y">
                                                         <size key="itemSize" width="238" height="242"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -906,7 +906,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="savedCollectionViewCell" id="M9S-DG-KiF" customClass="SavedCollectionViewCell" customModule="AirbnbClone" customModuleProvider="target">
-                                                            <rect key="frame" x="53.5" y="0.0" width="238" height="242"/>
+                                                            <rect key="frame" x="0.0" y="7" width="238" height="242"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="238" height="242"/>
@@ -916,15 +916,15 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="238" height="242"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggz-rr-HuQ">
-                                                                        <rect key="frame" x="28" y="178" width="184" height="21"/>
+                                                                        <rect key="frame" x="28" y="164" width="184" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idv-YD-UnI">
-                                                                        <rect key="frame" x="28" y="201" width="175" height="21"/>
+                                                                        <rect key="frame" x="28" y="187" width="175" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -937,7 +937,7 @@
                                                                 <constraint firstItem="bWO-13-ViM" firstAttribute="top" secondItem="M9S-DG-KiF" secondAttribute="top" id="FNF-0N-V8L"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="Idv-YD-UnI" secondAttribute="trailing" constant="19" id="Mi2-Ya-Acf"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="Ggz-rr-HuQ" secondAttribute="trailing" constant="10" id="UTz-F2-6rh"/>
-                                                                <constraint firstItem="Ggz-rr-HuQ" firstAttribute="top" secondItem="M9S-DG-KiF" secondAttribute="topMargin" constant="158" id="WXz-BZ-5Ko"/>
+                                                                <constraint firstItem="Ggz-rr-HuQ" firstAttribute="top" secondItem="M9S-DG-KiF" secondAttribute="topMargin" constant="144" id="WXz-BZ-5Ko"/>
                                                                 <constraint firstAttribute="bottom" secondItem="bWO-13-ViM" secondAttribute="bottom" id="qLn-AX-Yns"/>
                                                                 <constraint firstItem="Idv-YD-UnI" firstAttribute="top" secondItem="Ggz-rr-HuQ" secondAttribute="bottom" constant="2" id="zPA-u8-uVF"/>
                                                             </constraints>

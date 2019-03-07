@@ -17,6 +17,9 @@ class SavedViewController: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                if let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? SavedCollectionTableViewCell {
+                    cell.collectionView.reloadData()
+                }
             }
         }
     }
@@ -82,6 +85,7 @@ extension SavedViewController: UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "collectionTableCell", for: indexPath) as! SavedCollectionTableViewCell
             cell.collectionView.dataSource = self
+            cell.collectionView.delegate = self
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "savedListingCell", for: indexPath)
@@ -110,7 +114,11 @@ extension SavedViewController: UITableViewDataSource {
 
 extension SavedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        if indexPath.section == 0 {
+            return 200
+        } else {
+            return 60
+        }
     }
 }
 
@@ -136,9 +144,20 @@ extension SavedViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "User's Favorites"
+        case 1:
+            return "User's Created Posts"
+        default:
+         return "no posts"
+        }
+    }
 }
 
 extension SavedViewController: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: 200, height: 200)
+    }
 }

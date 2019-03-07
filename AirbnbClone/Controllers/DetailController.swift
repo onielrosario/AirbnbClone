@@ -59,10 +59,7 @@ class DetailController: UIViewController {
     }
     
     @IBAction func favortireButton(_ sender: UIButton) {
-      guard  let user = usersession.getCurrentUser() else {
-            return
-        }
-        let newFavoriteCollection = UserCollection.init(title: listingInfo.title, rooms: listingInfo.rooms, price: listingInfo.price, address: listingInfo.address, lat: listingInfo.lat, long: listingInfo.long, description: listingInfo.description, startDate: listingInfo.startDate, endDate: listingInfo.endDate, userID: user.uid, postImage: listingInfo.postImage)
+        let newFavoriteCollection = UserCollection.init(title: listingInfo.title, rooms: listingInfo.rooms, price: listingInfo.price, address: listingInfo.address, lat: listingInfo.lat, long: listingInfo.long, description: listingInfo.description, startDate: listingInfo.startDate, endDate: listingInfo.endDate, userID:listingInfo.userID, postImage: listingInfo.postImage)
         DatabaseManager.saveUserPostToFavoritesDatabase(userCollection: newFavoriteCollection)
         self.showAlert(title: "success", message: "added to favorites", actionTitle: "OK")
     }
