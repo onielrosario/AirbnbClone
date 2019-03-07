@@ -787,6 +787,7 @@
                         <outlet property="davailableDatesLabel" destination="bRL-iR-lVy" id="rqh-cO-Xha"/>
                         <outlet property="descriptionLabel" destination="kFm-Dr-14J" id="8NT-S4-hIX"/>
                         <outlet property="detailImage" destination="UDi-CC-DDH" id="6Rh-5r-tct"/>
+                        <outlet property="favoriteButton" destination="asF-tS-ePy" id="vw3-bM-e0a"/>
                         <outlet property="locationLabel" destination="btK-4o-SWe" id="0u7-EG-s8A"/>
                         <outlet property="regionMapview" destination="wBq-LK-qED" id="soG-LM-d1M"/>
                         <outlet property="titlelabel" destination="bXi-WI-qgT" id="PmP-VF-wMs"/>
@@ -879,7 +880,7 @@
         <!--Saved-->
         <scene sceneID="jP5-gq-QJA">
             <objects>
-                <viewController id="4T9-8R-7zB" customClass="SavedViewController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteVC" id="4T9-8R-7zB" customClass="SavedViewController" customModule="AirbnbClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h6j-pY-iEh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -109,6 +109,15 @@ extension SavedViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let favorite = userCreatedPost[indexPath.row]
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailVC") as! DetailController
+        detailVC.listingInfo = favorite
+//        detailVC.favoriteButton.setImage(UIImage(named: "Liked"), for: .normal)
+//        detailVC.favoriteButton.isEnabled = false
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
     
 }
 
@@ -142,6 +151,14 @@ extension SavedViewController: UICollectionViewDataSource {
         cell.titleLabel.text = indexpath.title
         cell.subTitleLabel.text = indexpath.address
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let favorite = favorites[indexPath.row]
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailVC") as! DetailController
+        detailVC.listingInfo = favorite
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

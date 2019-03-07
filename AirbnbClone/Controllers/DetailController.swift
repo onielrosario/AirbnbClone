@@ -17,6 +17,8 @@ class DetailController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var regionMapview: MKMapView!
     @IBOutlet weak var davailableDatesLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     private var usersession: UserSession!
     var listingInfo: UserCollection!
     override func viewDidLoad() {
@@ -24,6 +26,20 @@ class DetailController: UIViewController {
         regionMapview.delegate = self
         configureDetail()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
+       configureFaveButton()
+    }
+    
+    private func configureFaveButton() {
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let favoriteVC = storyboard.instantiateViewController(withIdentifier: "FavoriteVC") as! SavedViewController
+        
+        
+        
+        
+        if let _ = navigationController?.parent?.children[1].children[0] as? SavedViewController {
+            self.favoriteButton.isEnabled = false
+            self.favoriteButton.setImage(UIImage(named: "Liked"), for: .normal)
+        }
     }
     
     private func configureDetail() {
