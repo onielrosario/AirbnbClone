@@ -30,12 +30,6 @@ class DetailController: UIViewController {
     }
     
     private func configureFaveButton() {
-//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//        let favoriteVC = storyboard.instantiateViewController(withIdentifier: "FavoriteVC") as! SavedViewController
-        
-        
-        
-        
         if let _ = navigationController?.parent?.children[1].children[0] as? SavedViewController {
             self.favoriteButton.isEnabled = false
             self.favoriteButton.setImage(UIImage(named: "Liked"), for: .normal)
@@ -45,6 +39,7 @@ class DetailController: UIViewController {
     private func configureDetail() {
         ImageCache.shared.fetchImageFromNetwork(urlString: listingInfo.postImage) { (error, image) in
             if let error = error {
+                 self.detailImage.image = UIImage(named: "locationPlaceholder")
                 print(error)
             } else if let image = image {
                 self.detailImage.image = image
@@ -78,6 +73,8 @@ class DetailController: UIViewController {
         let newFavoriteCollection = UserCollection.init(title: listingInfo.title, rooms: listingInfo.rooms, price: listingInfo.price, address: listingInfo.address, lat: listingInfo.lat, long: listingInfo.long, description: listingInfo.description, startDate: listingInfo.startDate, endDate: listingInfo.endDate, userID:listingInfo.userID, postImage: listingInfo.postImage)
         DatabaseManager.saveUserPostToFavoritesDatabase(userCollection: newFavoriteCollection)
         self.showAlert(title: "success", message: "added to favorites", actionTitle: "OK")
+        self.favoriteButton.isEnabled = false
+        self.favoriteButton.setImage(UIImage(named: "Liked"), for: .normal)
     }
 }
 
