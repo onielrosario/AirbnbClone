@@ -33,12 +33,7 @@ class SearchViewController: UIViewController {
             }
         }
     }
-//    private var test = Double(){
-//        didSet{
-//                self.mapView.reloadInputViews()
-//        }
-//    }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

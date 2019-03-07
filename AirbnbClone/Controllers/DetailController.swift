@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FirebaseFirestore
 
 class DetailController: UIViewController {
     @IBOutlet weak var detailImage: UIImageView!
@@ -16,11 +17,13 @@ class DetailController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var regionMapview: MKMapView!
     @IBOutlet weak var davailableDatesLabel: UILabel!
+    private var usersession: UserSession!
     var listingInfo: UserCollection!
     override func viewDidLoad() {
         super.viewDidLoad()
         regionMapview.delegate = self
-    configureDetail()
+        configureDetail()
+        usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
     }
     
     private func configureDetail() {
@@ -29,6 +32,8 @@ class DetailController: UIViewController {
                 print(error)
             } else if let image = image {
                 self.detailImage.image = image
+            } else {
+                self.detailImage.image = UIImage(named: "locationPlaceholder")
             }
         }
         titlelabel.text = listingInfo.title
@@ -39,14 +44,14 @@ class DetailController: UIViewController {
         price: $\(Int(listingInfo.price)).00 per night!
         """
         davailableDatesLabel.text = "from: \(listingInfo.startDate) / to: \(listingInfo.endDate)"
-          let coordinate = CLLocationCoordinate2D(latitude: listingInfo.lat, longitude: listingInfo.long)
-         let span = MKCoordinateSpan(latitudeDelta: 0.075, longitudeDelta: 0.075)
+        let coordinate = CLLocationCoordinate2D(latitude: listingInfo.lat, longitude: listingInfo.long)
+        let span = MKCoordinateSpan(latitudeDelta: 0.075, longitudeDelta: 0.075)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         regionMapview.setRegion(region, animated: true)
         regionMapview.isScrollEnabled = false
         regionMapview.isZoomEnabled = false
     }
-
+    
     
     
     @IBAction func bookButton(_ sender: UIButton) {
@@ -54,10 +59,13 @@ class DetailController: UIViewController {
     }
     
     @IBAction func favortireButton(_ sender: UIButton) {
+      guard  let user = usersession.getCurrentUser() else {
+            return
+        }
+        let newFavoriteCollection = UserCollection.init(title: listingInfo.title, rooms: listingInfo.rooms, price: listingInfo.price, address: listingInfo.address, lat: listingInfo.lat, long: listingInfo.long, description: listingInfo.description, startDate: listingInfo.startDate, endDate: listingInfo.endDate, userID: user.uid, postImage: listingInfo.postImage)
+        DatabaseManager.saveUserPostToFavoritesDatabase(userCollection: newFavoriteCollection)
+        self.showAlert(title: "success", message: "added to favorites", actionTitle: "OK")
     }
-    
-    
-
 }
 
 extension DetailController: MKMapViewDelegate {

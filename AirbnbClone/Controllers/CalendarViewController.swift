@@ -15,6 +15,11 @@ protocol CalendarDateSelectedDelegate: AnyObject {
 }
 
 
+protocol CalendarUpdateSearchDelegate: AnyObject {
+    func updateMainSearch(startDate: String, endDate: String)
+}
+
+
 
 class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: JTAppleCalendarView! {
@@ -22,6 +27,7 @@ class CalendarViewController: UIViewController {
             self.calendarCollectionView.reloadData()
         }
     }
+    weak var mainDelegate: CalendarUpdateSearchDelegate?
     weak var delegate: CalendarDateSelectedDelegate?
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -43,9 +49,8 @@ class CalendarViewController: UIViewController {
         }
         calendarCollectionView.allowsMultipleSelection = true
         calendarCollectionView.isRangeSelectionUsed = true
-        
     }
-    
+
     
     func setupCalendarView() {
         calendarCollectionView.minimumLineSpacing = 0
@@ -165,6 +170,9 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
             let formatedSecondDate = formatter.string(from: date)
             showAlert(title: "Dates selected", message: "from \(formatedFirstDate) to \(formatedSecondDate)", style: .alert) { (alert) in
                 self.delegate?.didSelectDates(startDate: formatedFirstDate, endDate: formatedSecondDate)
+                if (self.navigationController?.parent as? SearchViewController) != nil {
+                    self.mainDelegate?.updateMainSearch(startDate: formatedFirstDate, endDate: formatedSecondDate)
+                }
             }
         } else {
             firstDate = date
