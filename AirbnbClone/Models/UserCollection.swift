@@ -23,8 +23,9 @@ struct UserCollection {
     let endDate: String
     let userID: String
     let postImage: String
+    let documentID: String
     
-    init(title: String, rooms: Int, price: Double, address: String, lat: Double, long: Double, description: String, startDate: String, endDate: String, userID: String, postImage: String) {
+    init(title: String, rooms: Int, price: Double, address: String, lat: Double, long: Double, description: String, startDate: String, endDate: String, userID: String, postImage: String, dbReferenceDocumentId: String) {
         self.title = title
         self.rooms = rooms
         self.price = price
@@ -36,6 +37,7 @@ struct UserCollection {
         self.endDate = endDate
         self.userID = userID
         self.postImage = postImage
+        self.documentID = dbReferenceDocumentId
     }
     
     init(dict: [String:Any]) {
@@ -50,6 +52,7 @@ struct UserCollection {
         self.endDate = dict["endDate"] as? String ?? "no end date"
         self.userID = dict["userID"] as? String ?? "no user"
         self.postImage = dict["postImage"] as? String ?? "no post image"
+        self.documentID = dict["documentID"] as? String ?? "no dbReference"
     }
     
     public var coordinate: CLLocationCoordinate2D {

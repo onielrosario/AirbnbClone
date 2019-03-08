@@ -147,7 +147,7 @@ class NewPostController: UIViewController {
                     return
                 }
                 
-                let newPostCollection = UserCollection.init(title: self.newPostTitle, rooms: self.numberOfRooms, price: self.price, address: self.address, lat: self.lat, long: self.Long, description: self.descriptionString, startDate: self.startDate, endDate: self.endDate, userID: user.uid, postImage: url.absoluteString)
+                let newPostCollection = UserCollection.init(title: self.newPostTitle, rooms: self.numberOfRooms, price: self.price, address: self.address, lat: self.lat, long: self.Long, description: self.descriptionString, startDate: self.startDate, endDate: self.endDate, userID: user.uid, postImage: url.absoluteString, dbReferenceDocumentId: "")
                 DatabaseManager.addUserPostToDatabase(collectionInfo: newPostCollection)
                 activity.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)

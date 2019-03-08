@@ -83,9 +83,11 @@ final class DatabaseManager {
         })
     }
     
-    static func saveUserPostToFavoritesDatabase(userCollection: UserCollection) {
-        var ref: DocumentReference? = nil
-        ref = firebaseDB.collection(DatabaseKeys.FavoritesCollectionKey).addDocument(data: ["title": userCollection.title,
+    static func saveUserPostToFavoritesDatabase(userCollection: UserCollection, documentId: String) {
+            firebaseDB
+            .collection(DatabaseKeys.FavoritesCollectionKey)
+            .document(documentId)
+            .setData(["title": userCollection.title,
                                                                                             "rooms" : userCollection.rooms,
                                                                                             "price" : userCollection.price,
                                                                                             "address" : userCollection.address,
@@ -95,20 +97,14 @@ final class DatabaseManager {
                                                                                             "startDate" : userCollection.startDate,
                                                                                             "endDate" : userCollection.endDate,
                                                                                             "userID" : userCollection.userID,
-                                                                                            "postImage" : userCollection.postImage
+                                                                                            "postImage" : userCollection.postImage,
+                                                                                            "documentID": documentId
             
             ], completion: { (error) in
                 if let error = error {
                     print("posting favorites collection failed: \(error)")
                 } else {
-                    print("user created a favorite post! at ref: \(ref?.documentID ?? "no document ID")")
-                    DatabaseManager.firebaseDB.collection(DatabaseKeys.DocumentsCollectionKey).document(ref!.documentID).updateData(["dbReference" : ref!.documentID], completion: { (error) in
-                        if let error = error {
-                            print("error updating user collection fields: \(error)")
-                        } else {
-                            print("field successfully updated")
-                        }
-                    })
+                    print("user created a favorite post! at ref")
                 }
         })
     }

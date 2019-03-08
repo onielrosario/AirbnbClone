@@ -114,9 +114,27 @@ extension SavedViewController: UITableViewDataSource {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailVC") as! DetailController
         detailVC.listingInfo = favorite
-//        detailVC.favoriteButton.setImage(UIImage(named: "Liked"), for: .normal)
-//        detailVC.favoriteButton.isEnabled = false
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1:
+            let collection = userCreatedPost[indexPath.row]
+            DatabaseManager.firebaseDB
+                .collection(DatabaseKeys.FavoritesCollectionKey)
+                .document(collection.documentID)
+                .delete { (error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        self.showAlert(title: "", message: "Document deleted", actionTitle: "OK")
+                    }
+            }
+        default:
+            break
+        }
+        
     }
     
 }

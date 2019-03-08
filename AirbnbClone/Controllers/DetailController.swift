@@ -26,7 +26,7 @@ class DetailController: UIViewController {
         regionMapview.delegate = self
         configureDetail()
         usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
-       configureFaveButton()
+//       configureFaveButton()
     }
     
     private func configureFaveButton() {
@@ -70,8 +70,13 @@ class DetailController: UIViewController {
     }
     
     @IBAction func favortireButton(_ sender: UIButton) {
-        let newFavoriteCollection = UserCollection.init(title: listingInfo.title, rooms: listingInfo.rooms, price: listingInfo.price, address: listingInfo.address, lat: listingInfo.lat, long: listingInfo.long, description: listingInfo.description, startDate: listingInfo.startDate, endDate: listingInfo.endDate, userID:listingInfo.userID, postImage: listingInfo.postImage)
-        DatabaseManager.saveUserPostToFavoritesDatabase(userCollection: newFavoriteCollection)
+        // get doc id
+        let dbRef = DatabaseManager.firebaseDB
+            .collection(DatabaseKeys.FavoritesCollectionKey)
+            .document()
+        
+        let newFavoriteCollection = UserCollection.init(title: listingInfo.title, rooms: listingInfo.rooms, price: listingInfo.price, address: listingInfo.address, lat: listingInfo.lat, long: listingInfo.long, description: listingInfo.description, startDate: listingInfo.startDate, endDate: listingInfo.endDate, userID:listingInfo.userID, postImage: listingInfo.postImage, dbReferenceDocumentId: dbRef.documentID)
+        DatabaseManager.saveUserPostToFavoritesDatabase(userCollection: newFavoriteCollection, documentId: dbRef.documentID)
         self.showAlert(title: "success", message: "added to favorites", actionTitle: "OK")
         self.favoriteButton.isEnabled = false
         self.favoriteButton.setImage(UIImage(named: "Liked"), for: .normal)
