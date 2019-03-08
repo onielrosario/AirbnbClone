@@ -13,6 +13,11 @@ class SavedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var listener: ListenerRegistration!
     private var usersession: UserSession!
+    private var user: UserProfile? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     var favorites = [UserCollection]() {
         didSet {
             DispatchQueue.main.async {
@@ -29,15 +34,32 @@ class SavedViewController: UIViewController {
         }
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
          usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         getFavorites()
+        getUserProfile()
+    }
+    
+    private func getUserProfile() {
+        let user = usersession.getCurrentUser()
+        if let uid = user?.uid {
+            let docRef = DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey).document(uid)
+            docRef.getDocument { (document, error) in
+                DispatchQueue.main.async {
+                    if let user = document.flatMap({
+                        $0.data().flatMap({ (data) in
+                            return UserProfile(dict: data)
+                        })
+                    }) {
+                        self.user = user
+                    } else {
+                        print("user does not exist")
+                    }
+                }}
+        }
     }
     
     private func getFavorites() {
@@ -134,7 +156,6 @@ extension SavedViewController: UITableViewDataSource {
         default:
             break
         }
-        
     }
     
 }
@@ -179,12 +200,23 @@ extension SavedViewController: UICollectionViewDataSource {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "User's Favorites"
+            if let currentUser = user {
+            return "\(currentUser.name)'s Favorites"
+            } else {
+                 return "User's Favorites"
+            }
         case 1:
-            return "User's Created Posts"
+            if let currentUser = user {
+            return "\(currentUser.name)'s Created Posts"
+            } else {
+                return "User's Created Posts"
+            }
         default:
          return "no posts"
         }

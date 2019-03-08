@@ -34,17 +34,17 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIj-C4-AKA">
                                 <rect key="frame" x="0.0" y="406" width="375" height="26"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Price preference:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nu-iZ-WBB">
-                                <rect key="frame" x="0.0" y="490" width="375" height="22.5"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     Price preference:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nu-iZ-WBB">
+                                <rect key="frame" x="0.0" y="490" width="375" height="26"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aQ-ve-e3w" customClass="RangeSlider" customModule="SwiftRangeSlider">
-                                <rect key="frame" x="37.5" y="520.5" width="300" height="50"/>
+                                <rect key="frame" x="37.5" y="524" width="300" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="f5T-RH-QYY"/>
@@ -83,9 +83,9 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-1H-Ici">
-                                <rect key="frame" x="37.5" y="578.5" width="300" height="20.5"/>
+                                <rect key="frame" x="37.5" y="582" width="300" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="INb-H4-AMP">
@@ -276,12 +276,17 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1Z-FK-rUl">
-                                <rect key="frame" x="112.5" y="476" width="150" height="42"/>
+                                <rect key="frame" x="112.5" y="565" width="150" height="42"/>
                                 <color key="backgroundColor" red="0.94622749090000002" green="0.62506037950000004" blue="0.51761823890000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="doneButtonPressed:" destination="6EM-KI-Wng" eventType="touchUpInside" id="JEh-ch-XCX"/>
                                 </connections>
@@ -299,7 +304,7 @@
                             <constraint firstItem="Z41-Hl-J2s" firstAttribute="top" secondItem="jMo-Ym-pLu" secondAttribute="bottom" id="8Fa-Pt-wSS"/>
                             <constraint firstItem="h1Z-FK-rUl" firstAttribute="width" secondItem="EeS-di-cvo" secondAttribute="width" multiplier="0.4" id="8Sr-Ww-YaZ"/>
                             <constraint firstItem="h1Z-FK-rUl" firstAttribute="centerX" secondItem="EeS-di-cvo" secondAttribute="centerX" id="9hA-47-Zlh"/>
-                            <constraint firstItem="h1Z-FK-rUl" firstAttribute="top" secondItem="EeS-di-cvo" secondAttribute="bottom" constant="30" id="BdZ-sF-jCP"/>
+                            <constraint firstItem="h1Z-FK-rUl" firstAttribute="top" secondItem="EeS-di-cvo" secondAttribute="bottom" multiplier="1.2" constant="30" id="BdZ-sF-jCP"/>
                             <constraint firstItem="rnW-dw-FE4" firstAttribute="top" secondItem="sfv-vF-8gi" secondAttribute="top" id="GJN-IN-XGy"/>
                             <constraint firstItem="jMo-Ym-pLu" firstAttribute="top" secondItem="sfv-vF-8gi" secondAttribute="top" constant="17" id="Jrt-jF-oyM"/>
                             <constraint firstItem="sfv-vF-8gi" firstAttribute="trailing" secondItem="rnW-dw-FE4" secondAttribute="trailing" constant="11" id="NKn-q2-hcX"/>
@@ -917,14 +922,14 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="238" height="242"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggz-rr-HuQ">
-                                                                        <rect key="frame" x="28" y="164" width="184" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <rect key="frame" x="28" y="160" width="184" height="22.5"/>
+                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idv-YD-UnI">
-                                                                        <rect key="frame" x="28" y="187" width="175" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <rect key="frame" x="28" y="184.5" width="175" height="21"/>
+                                                                        <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -938,7 +943,7 @@
                                                                 <constraint firstItem="bWO-13-ViM" firstAttribute="top" secondItem="M9S-DG-KiF" secondAttribute="top" id="FNF-0N-V8L"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="Idv-YD-UnI" secondAttribute="trailing" constant="19" id="Mi2-Ya-Acf"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="Ggz-rr-HuQ" secondAttribute="trailing" constant="10" id="UTz-F2-6rh"/>
-                                                                <constraint firstItem="Ggz-rr-HuQ" firstAttribute="top" secondItem="M9S-DG-KiF" secondAttribute="topMargin" constant="144" id="WXz-BZ-5Ko"/>
+                                                                <constraint firstItem="Ggz-rr-HuQ" firstAttribute="top" secondItem="M9S-DG-KiF" secondAttribute="topMargin" multiplier="0.8" constant="144" id="WXz-BZ-5Ko"/>
                                                                 <constraint firstAttribute="bottom" secondItem="bWO-13-ViM" secondAttribute="bottom" id="qLn-AX-Yns"/>
                                                                 <constraint firstItem="Idv-YD-UnI" firstAttribute="top" secondItem="Ggz-rr-HuQ" secondAttribute="bottom" constant="2" id="zPA-u8-uVF"/>
                                                             </constraints>
@@ -970,17 +975,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KU7-O6-8Ha">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="1" width="31.5" height="22.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <color key="textColor" red="0.174853128" green="0.2225734221" blue="0.3657343045" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hm7-ro-Ezk">
-                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <rect key="frame" x="15" y="23.5" width="55.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
