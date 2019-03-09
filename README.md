@@ -21,7 +21,7 @@ FireBase, Cocoapods, Mapkit, UIKit
  # Features
  For Guests, members can use filters to search a lodging by date, zip code, city name, and price.
 
-# Upcomiong features
+# Upcoming features
 a showing a result of places in a collection view as part of the main page. as well as givin the user a choice of type of places to search (HOUSE, APARTMENTS, ROOMS).
 
 <img width="269" alt="Screen Shot 2019-03-08 at 12 45 06 PM" src="https://user-images.githubusercontent.com/43827399/54078259-35197f80-4293-11e9-9dc2-b1637f6d7028.png">
