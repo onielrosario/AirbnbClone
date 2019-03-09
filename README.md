@@ -20,3 +20,6 @@ FireBase, Cocoapods, Mapkit, UIKit
  
  # Features
  For Guests, members can use filters to search a lodging by date, zip code, city name, and price.
+
+# Upcomiong feeatures
+
