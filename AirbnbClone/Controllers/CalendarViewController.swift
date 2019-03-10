@@ -170,7 +170,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
             let formatedSecondDate = formatter.string(from: date)
             showAlert(title: "Dates selected", message: "from \(formatedFirstDate) to \(formatedSecondDate)", style: .alert) { (alert) in
                 self.delegate?.didSelectDates(startDate: formatedFirstDate, endDate: formatedSecondDate)
-                if (self.navigationController?.parent as? SearchViewController) != nil {
+                if let _ = self.parent?.children[0] {
                     self.mainDelegate?.updateMainSearch(startDate: formatedFirstDate, endDate: formatedSecondDate)
                 }
             }

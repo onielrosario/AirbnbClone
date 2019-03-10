@@ -42,4 +42,5 @@ struct UserProfile {
     public var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2DMake(lat, lon)
     }
+    
 }

@@ -36,12 +36,27 @@ class SavedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         updateUI()
         tableView.dataSource = self
         tableView.delegate = self
          usersession = (UIApplication.shared.delegate as! AppDelegate).usersession
         getFavorites()
         getUserProfile()
+//        updateUI()
     }
+    
+    private func updateUI() {
+        var gradient: CAGradientLayer!
+        gradient = CAGradientLayer()
+        gradient.frame = self.view.bounds
+        gradient.colors = [UIColor.init(r: 241, g: 159, b: 132).cgColor, UIColor.init(r: 247, g: 203, b: 187).cgColor]
+        if let gradientView = self.tableView.backgroundView {
+            self.tableView.backgroundColor = .clear
+           gradientView.layer.insertSublayer(gradient, above: self.view.layer)
+        }
+        
+    }
+
     
     private func getUserProfile() {
         let user = usersession.getCurrentUser()
@@ -181,6 +196,7 @@ extension SavedViewController: UICollectionViewDataSource {
         ImageCache.shared.fetchImageFromNetwork(urlString: indexpath.postImage) { (error, image) in
             if let error = error {
                 print(error)
+                 cell.collectionViewCellImage.image = UIImage(named: "locationPlaceholder")
             } else if let image = image {
                 cell.collectionViewCellImage.image = image
             } else {

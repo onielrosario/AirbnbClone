@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController {
     }
     
     
-    private func getUserProfile() {
+     func getUserProfile() {
         let user = usersession.getCurrentUser()
         if let uid = user?.uid {
             let docRef = DatabaseManager.firebaseDB.collection(DatabaseKeys.UsersCollectionKey).document(uid)
@@ -91,6 +91,7 @@ class ProfileViewController: UIViewController {
         if user != nil {
             if let image = ImageCache.shared.fetchImageFromCache(urlString: user?.photoURL?.absoluteString ?? "no photo url") {
                 self.profileImage = image
+                activity.dismiss(animated: true, completion: nil)
             }  else {
                 activity.modalPresentationStyle = .overCurrentContext
                 present(activity, animated: true, completion: nil)

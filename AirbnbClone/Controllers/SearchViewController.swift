@@ -19,6 +19,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var rangeSlider: RangeSlider!
     @IBOutlet weak var priceRangeValueLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var startDate = ""
+    private var endDate = ""
     var pinAnnotationView: MKPinAnnotationView!
     private var listener: ListenerRegistration!
     private var annotations = [MKPointAnnotation]() {
@@ -97,6 +99,13 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? CalendarViewController else  {
+            return
+        }
+        destination.mainDelegate = self
+    }
+    
     
 }
 
@@ -160,9 +169,32 @@ extension SearchViewController: MKMapViewDelegate {
         }
      mapView.deselectAnnotation(annotation, animated: true)
     }
-    
+}
+
+extension SearchViewController: CalendarUpdateSearchDelegate {
+    func updateMainSearch(startDate: String, endDate: String) {
+        self.mapView.removeAnnotations(annotations)
+        annotations.removeAll()
+       listener = DatabaseManager.firebaseDB.collection(DatabaseKeys.DocumentsCollectionKey)
+        .whereField("startDate", isEqualTo: startDate)
+        .whereField("endDate", isEqualTo: endDate)
+        .addSnapshotListener(includeMetadataChanges: true, listener: { (snapShot, error) in
+            if let error = error {
+                print(error)
+            } else if let snapShot = snapShot {
+                for document in snapShot.documents {
+                    let searchPlaces = UserCollection(dict: document.data())
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = CLLocationCoordinate2D(latitude: searchPlaces.lat, longitude: searchPlaces.long)
+                    annotation.title = searchPlaces.title
+                    self.annotations.append(annotation)
+                    self.mapView.addAnnotation(annotation)
+                    self.mapView.reloadInputViews()
+                }
+            }
+        })
+    }
     
     
 }
-
 
